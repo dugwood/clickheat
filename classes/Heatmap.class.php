@@ -2,17 +2,16 @@
 
 /**
  * ClickHeat: Classe de génération des cartes / Maps generation class
- * 
+ *
  * Cette classe est VOLONTAIREMENT écrite pour PHP 4
  * This class is VOLUNTARILY written for PHP 4
- * 
- * @author Yvan Taviaud - LabsMedia - www.labsmedia.com
+ *
+ * @author Yvan Taviaud - Dugwood - www.dugwood.com
  * @since 08/05/2007
- * */
+ */
 class Heatmap
 {
 	/* @var integer $memory Limite de mémoire / Memory limit */
-
 	var $memory = 8388608;
 	/* @var integer $step Groupement des pixels / Pixels grouping */
 	var $step = 5;
@@ -211,7 +210,7 @@ class Heatmap
 		 * Colors creation:
 		 * grey	=> deep blue (rgB)	=> light blue (rGB)	=> green (rGb)		=> yellow (RGb)		=> red (Rgb)
 		 * 0	   $this->__colors[0]	   $this->__colors[1]	   $this->__colors[2]	   $this->__colors[3]	   128
-		 * */
+		 */
 		sort($this->__colors);
 		$colors = array();
 		for ($i = 0; $i < 128; $i++)
@@ -402,5 +401,3 @@ class Heatmap
 	}
 
 }
-
-?>

@@ -44,7 +44,7 @@ define('LANG_LAYOUT_RIGHT', 'Largura fixa direita (pixels)');
 define('LANG_SCREENSIZE', 'Tamanho de tela');
 define('LANG_HEATMAP', 'Heatmap e sua transparencia');
 define('LANG_LATEST_CHECK', 'Upgrade');
-define('LANG_LATEST_KO', 'Não foi possível achar dinamicamente a última versão disponível, a sua é %s, a última lida diretamente do site da Labsmedia é');
+define('LANG_LATEST_KO', 'Não foi possível achar dinamicamente a última versão disponível, a sua é %s, a última lida diretamente do site da Dugwood é');
 define('LANG_LATEST_OK', 'Você possui a última versão disponível (%s)');
 define('LANG_LATEST_NO', 'Sua versão (%s) não é a última disponível (%s). Você pode efetuar o download da última em nosso website:');
 define('LANG_LOG_MY_CLICKS', 'Gravar meus clicks?');
@@ -57,8 +57,8 @@ define('LANG_JAVASCRIPT_SITE', 'Nome do website (caracteres permitidos: A-Z, a-z
 define('LANG_JAVASCRIPT_GROUP', 'Nome do Grupo, para agrupar páginas similares para uma analise simplificada');
 define('LANG_JAVASCRIPT_GROUP0', 'use uma palavra-chave');
 define('LANG_JAVASCRIPT_GROUP1', 'caracteres permitidos: A-Z, a-z, 0-9, sublinhado, hífen, ponto');
-define('LANG_JAVASCRIPT_GROUP2', 'use o títuloda página web (<a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">não recomendado</a>)');
-define('LANG_JAVASCRIPT_GROUP3', 'use a URL da página web (<a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">não recomendado</a>)');
+define('LANG_JAVASCRIPT_GROUP2', 'use o títuloda página web (<a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">não recomendado</a>)');
+define('LANG_JAVASCRIPT_GROUP3', 'use a URL da página web (<a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">não recomendado</a>)');
 define('LANG_JAVASCRIPT_PASTE', 'Copie e cole o codigo abaixo em suas paginas, antes do final da mesma (antes da tag &lt;/body&gt;):');
 define('LANG_JAVASCRIPT_DEBUG', 'Depois de colocar o código nas suas páginas, não esqueça de testar se o mesmo funciona corretamente, acessando sua pagina com o parametro <span class="error">debugclickheat</span>. Por exemplo para http://www.site.com/index.html digite http://www.site.com/index.html<span class="error">?debugclickheat</span>. Você deverá ver uma mensagem mostrando o status do Clickheat. Se você encontrar algum problema, por favor nos contate');
 define('LANG_NO_CLICK_BELOW', 'No clicks recorded beneath this line'); // Leave this line in English please
@@ -94,7 +94,7 @@ define('LANG_CONFIG_REFERERS', 'Nomes de domínios (separados por virgulas) auto
 define('LANG_CONFIG_GROUPS', 'Nome de grupos (separados por virgulas) autotizados a gravar clicks neste servidor');
 define('LANG_CONFIG_FILESIZE', 'Maximo tamanho do arquivo de log (em KB) de um grupo por dia(1000 clicks representam cerca de 25KB, 0 = sem limite)');
 define('LANG_CONFIG_CHECK', 'Checar configuração');
-define('LANG_CONFIG_MEMORY', 'Limite de memória (valor default do php.ini: %dMB, limites: de %d até %dMB, mas <a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">cuidado com valores altos</a>)');
+define('LANG_CONFIG_MEMORY', 'Limite de memória (valor default do php.ini: %dMB, limites: de %d até %dMB, mas <a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">cuidado com valores altos</a>)');
 define('LANG_CONFIG_MEMORY_KO', 'por favor fique dentro dos limites especificados');
 define('LANG_CONFIG_STEP', 'Clicks agrupados por zonas de X*X pixels(acelera o display dos heatmaps)');
 define('LANG_CONFIG_STEP_KO', 'zonas não podem ser menores que 1x1 pixels');

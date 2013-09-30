@@ -1,22 +1,22 @@
 /**
-ClickHeat : Suivi et analyse des clics / Tracking and clicks analysis
+ ClickHeat : Suivi et analyse des clics / Tracking and clicks analysis
 
-@author Yvan Taviaud - LabsMedia - www.labsmedia.com/clickheat/
-@since 27/10/2006
-@update 01/03/2007 - Yvan : correctif Firefox (Károly Marton)
-@update 23/03/2007 - Yvan : protection de 2 secondes entre chaque clic, et X clics maximum par page
-@update 18/05/2007 - Yvan : suppression de clickHeatPage, ajout de clickHeatGroup et clickHeatSite
-@update 27/08/2007 - Yvan : changement du système de débug
-@update 28/09/2007 - Yvan : ajout de quelques messages de débug
-@update 16/03/2008 - Yvan : utilisation des Listeners - ajout d'un délai pour enregistrer le clic correctement - correctif JSLint
-@update 05/07/2010 - Yvan : ajout de Chrome, ajout du test non-Ajax pour libérer le clic plus rapidement
-@update 13/08/2010 - Yvan : gestion de IE 8 qui posait des soucis sur l'event
-@update 08/03/2011 - Yvan : ajout d'un filtre en cas de clic trop bas (hors du document.body)
+ @author Yvan Taviaud - Dugwood - www.dugwood.com
+ @since 27/10/2006
+ @update 01/03/2007 - Yvan : correctif Firefox (Károly Marton)
+ @update 23/03/2007 - Yvan : protection de 2 secondes entre chaque clic, et X clics maximum par page
+ @update 18/05/2007 - Yvan : suppression de clickHeatPage, ajout de clickHeatGroup et clickHeatSite
+ @update 27/08/2007 - Yvan : changement du système de débug
+ @update 28/09/2007 - Yvan : ajout de quelques messages de débug
+ @update 16/03/2008 - Yvan : utilisation des Listeners - ajout d'un délai pour enregistrer le clic correctement - correctif JSLint
+ @update 05/07/2010 - Yvan : ajout de Chrome, ajout du test non-Ajax pour libérer le clic plus rapidement
+ @update 13/08/2010 - Yvan : gestion de IE 8 qui posait des soucis sur l'event
+ @update 08/03/2011 - Yvan : ajout d'un filtre en cas de clic trop bas (hors du document.body)
 
-Tested under :
-Windows 2000 - IE 6.0
-Linux - Firefox 2.0.0.1, Konqueror 3.5.5, IE 7
-*/
+ Tested under :
+ Windows 2000 - IE 6.0
+ Linux - Firefox 2.0.0.1, Konqueror 3.5.5, IE 7
+ */
 
 /*global window: true*/
 
@@ -51,20 +51,20 @@ function addEvtListener(obj, evtName, f)
 
 /* Main variables */
 var clickHeatGroup = '',
-clickHeatSite = '',
-clickHeatServer = '',
-clickHeatLastIframe = -1,
-clickHeatTime = 0,
-clickHeatQuota = -1,
-clickHeatBrowser = '',
-clickHeatDocument = '',
-clickHeatWait = 500,
-clickHeatLocalWait = 0,
-clickHeatDebug = (document.location.href.indexOf('debugclickheat') !== -1);
+		clickHeatSite = '',
+		clickHeatServer = '',
+		clickHeatLastIframe = -1,
+		clickHeatTime = 0,
+		clickHeatQuota = -1,
+		clickHeatBrowser = '',
+		clickHeatDocument = '',
+		clickHeatWait = 500,
+		clickHeatLocalWait = 0,
+		clickHeatDebug = (document.location.href.indexOf('debugclickheat') !== -1);
 
 /**
-* Shows a debug string
-**/
+ * Shows a debug string
+ */
 function showClickHeatDebug(str)
 {
 	if (clickHeatDebug === true)
@@ -78,17 +78,17 @@ function showClickHeatDebug(str)
 function catchClickHeat(e)
 {
 	var c,
-	element,
-	x, y,
-	w, h,
-	winw, winh,
-	scrollx, scrolly,
-	clickTime,
-	now,
-	clickHeatImg,
-	params,
-	sent		= false,
-	xmlhttp		= false;
+			element,
+			x, y,
+			w, h,
+			winw, winh,
+			scrollx, scrolly,
+			clickTime,
+			now,
+			clickHeatImg,
+			params,
+			sent = false,
+			xmlhttp = false;
 	/* Use a try{} to avoid showing errors to users */
 	try
 	{
@@ -192,7 +192,7 @@ function catchClickHeat(e)
 			{
 				if (clickHeatDebug === true)
 				{
-					xmlhttp.onreadystatechange = function ()
+					xmlhttp.onreadystatechange = function()
 					{
 						if (xmlhttp.readyState === 4)
 						{
@@ -250,11 +250,11 @@ function catchClickHeat(e)
 function initClickHeat()
 {
 	var i,
-	iFrames,
-	b,
-	browsers,
-	domain,
-	div;
+			iFrames,
+			b,
+			browsers,
+			domain,
+			div;
 	/* Debug Window */
 	if (clickHeatDebug === true)
 	{

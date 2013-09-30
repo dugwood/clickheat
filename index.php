@@ -2,16 +2,15 @@
 /**
  * ClickHeat : Fichier principal / Main file
  *
- * @author Yvan Taviaud - LabsMedia - www.labsmedia.com
+ * @author Yvan Taviaud - Dugwood - www.dugwood.com
  * @since 27/10/2006
-**/
-
+ */
 /* Remove the last space on this line (between * and /) to enable debugging. Don't forget to disable this when you're done! * /
-error_reporting(E_ALL);
-restore_error_handler();
-ini_set('display_errors', 1);
+  error_reporting(E_ALL);
+  restore_error_handler();
+  ini_set('display_errors', 1);
 
-/* Languages */
+  /* Languages */
 $__languages = array('bg', 'cz', 'de', 'en', 'es', 'fr', 'hu', 'id', 'it', 'ja', 'nl', 'pl', 'pt', 'ro', 'ru', 'sr', 'tr', 'uk', 'zh');
 
 $__action = isset($_GET['action']) && $_GET['action'] !== '' ? $_GET['action'] : 'view';
@@ -310,4 +309,3 @@ switch ($__action)
 			break;
 		}
 }
-?>

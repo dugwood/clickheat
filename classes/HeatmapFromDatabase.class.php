@@ -1,17 +1,17 @@
 <?php
+
 /**
  * ClickHeat : Classe de génération des cartes depuis une base de données MySQL / Maps generation class from a MySQL database
- * 
+ *
  * Cette classe est VOLONTAIREMENT écrite pour PHP 4
  * This class is VOLUNTARILY written for PHP 4
- * 
+ *
  * Utilisation : jettez un oeil au répertoire /examples/
  * Usage: have a look into /examples/ directory
- * 
- * @author Yvan Taviaud - LabsMedia - www.labsmedia.com
+ *
+ * @author Yvan Taviaud - Dugwood - www.dugwood.com
  * @since 19/05/2007
-**/
-
+ */
 class HeatmapFromDatabase extends Heatmap
 {
 	/** @var string $host Hôte (serveur) MySQL / MySQL host (server) */
@@ -33,7 +33,7 @@ class HeatmapFromDatabase extends Heatmap
 
 	/**
 	 * Do some tasks before drawing (database connection...)
-	**/
+	 */
 	function startDrawing()
 	{
 		$this->link = @mysql_connect($this->host, $this->user, $this->password);
@@ -61,7 +61,7 @@ class HeatmapFromDatabase extends Heatmap
 	 *
 	 * @param integer $image Number of the image (to be used with $this->height)
 	 * @return boolean Success
-	**/
+	 */
 	function drawPixels($image)
 	{
 		$limit = 0;
@@ -78,7 +78,7 @@ class HeatmapFromDatabase extends Heatmap
 			while ($click = mysql_fetch_row($result))
 			{
 				$x = (int) $click[0];
-				$y = (int) ($click[1]  - $image * $this->height);
+				$y = (int) ($click[1] - $image * $this->height);
 				if ($x < 0 || $x >= $this->width)
 				{
 					continue;
@@ -100,18 +100,19 @@ class HeatmapFromDatabase extends Heatmap
 			mysql_free_result($result);
 
 			$limit += $this->limit;
-		} while ($count === $this->limit);
+		}
+		while ($count === $this->limit);
 		return true;
 	}
 
 	/**
 	 * Do some cleaning or ending tasks (close database, reset array...)
-	**/
+	 */
 	function finishDrawing()
 	{
 		/** Close connection */
 		mysql_close($this->link);
 		return true;
 	}
+
 }
-?>

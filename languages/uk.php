@@ -57,8 +57,8 @@ define('LANG_JAVASCRIPT_SITE', 'Назва сайту (допустимі сим
 define('LANG_JAVASCRIPT_GROUP', 'Ім\'я групи, для групування подібних сторінок з цілью спрощення аналізу');
 define('LANG_JAVASCRIPT_GROUP0', 'використовувати ключове слово');
 define('LANG_JAVASCRIPT_GROUP1', 'допустимі символи: A-Z, a-z, 0-9, символ підкреслення, дефіс, крапка');
-define('LANG_JAVASCRIPT_GROUP2', 'використовувати заголовок сторінки (<a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">не рекомендується</a>)');
-define('LANG_JAVASCRIPT_GROUP3', 'використовувати адресу сторінки (<a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">не рекомендується</a>)');
+define('LANG_JAVASCRIPT_GROUP2', 'використовувати заголовок сторінки (<a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">не рекомендується</a>)');
+define('LANG_JAVASCRIPT_GROUP3', 'використовувати адресу сторінки (<a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">не рекомендується</a>)');
 define('LANG_JAVASCRIPT_PASTE', 'Скопіюйте і вставте наступний код в кінець ваших сторінок (перед тегом &lt;/body&gt;):');
 define('LANG_JAVASCRIPT_DEBUG', 'Після того як код вставлено на Ваші сторінки не забудьте перевірити їх, відкриваючи сторінки з параметром <span class="error">debugclickheat</span>. Наприклад, для сайту http://www.site.com/index.html попробуйте http://www.site.com/index.html<span class="error">?debugclickheat</span>. Ви повинні побачити Javascript повідомлення, що показує стан Clickheat. Якщо у Вас виникають якісь труднощі, зверніться до нас за допомогою');
 define('LANG_NO_CLICK_BELOW', 'No clicks recorded beneath this line'); // Leave this line in English please
@@ -94,7 +94,7 @@ define('LANG_CONFIG_REFERERS', 'Доменні імена (розділені к
 define('LANG_CONFIG_GROUPS', 'Назви груп (розділені комами) з яких можна збирати статистику кліків на цьому сервері');
 define('LANG_CONFIG_FILESIZE', 'Максимальний размір лог-файлу (в Кб) для групи в день (1000 кліків - це приблизно 25 Кб, 0 = без обмежень)');
 define('LANG_CONFIG_CHECK', 'Перевірити налаштування');
-define('LANG_CONFIG_MEMORY', 'Ліміт пам\'яті (по замовчуванню в php.ini встановлено: %dМБ, ліміт від %dМБ до %dМБ, але <a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">будьте обережними з великими значеннями</a>)');
+define('LANG_CONFIG_MEMORY', 'Ліміт пам\'яті (по замовчуванню в php.ini встановлено: %dМБ, ліміт від %dМБ до %dМБ, але <a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">будьте обережними з великими значеннями</a>)');
 define('LANG_CONFIG_MEMORY_KO', 'будь-ласка, не виходьте за межі');
 define('LANG_CONFIG_STEP', 'Кліки групуються по X*X-піксельним зонам (пришвидчить відображення карти)');
 define('LANG_CONFIG_STEP_KO', 'зони не можуть бути меньшими, ніж 1x1 пікселів');

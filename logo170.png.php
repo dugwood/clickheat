@@ -1,16 +1,15 @@
 <?php
 /**
  * ClickHeat : crée sur disque et renvoie le logo PNG 80x15 / creates on disk and returns the PNG 80x15 logo
- * 
- * @author Yvan Taviaud - LabsMedia - www.labsmedia.com
+ *
+ * @author Yvan Taviaud - Dugwood - www.dugwood.com
  * @since 31/10/2006
-**/
-
+ */
 define('CLICKHEAT_GREY_COLOR', 255);
 define('CLICKHEAT_LOW_COLOR', 0);
 define('CLICKHEAT_HIGH_COLOR', 255);
 
-/** Image creation */
+/* Image creation */
 $img = imagecreatetruecolor(170, 35);
 $white = imagecolorallocate($img, 255, 255, 255);
 $blue = imagecolorallocate($img, 70, 70, 255);
@@ -23,7 +22,7 @@ $shadow = imagecolorallocate($img, 200, 200, 255);
  * Colors creation :
  * grey	=> deep blue (rgB)	=> light blue (rGB)	=> green (rGb)		=> yellow (RGb)		=> red (Rgb)
  * 0	   $colorLevels[0]	   $colorLevels[1]	   $colorLevels[2]	   $colorLevels[3]	   128
-**/
+ */
 $colorLevels = array(30, 55, 65, 75);
 $colors = array();
 for ($i = 0; $i < 128; $i++)
@@ -88,7 +87,7 @@ imagefill($img, 0, 0, $white);
 /**
  * Courbe en forme de poire (pear-like curve)
  * http://www.mathcurve.com/courbes2d/piriforme/piriforme.shtml
-**/
+ */
 for ($i = 1; $i <= $max; $i++)
 {
 	$a = $max - $i + 1;
@@ -133,4 +132,3 @@ header('Content-Type: image/png');
 imagepng($img, './images/logo170.png');
 imagepng($img);
 imagedestroy($img);
-?>

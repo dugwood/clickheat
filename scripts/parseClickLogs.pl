@@ -1,15 +1,15 @@
 #!/usr/bin/perl -w
 ###
 ## ClickHeat : Apache log parser
-## 
+##
 ## Developpement effectue pour/developed for WAT (www.wat.tv)
-## WAT - Partagez votre univers (vid�os, musique, photos) entre amis
+## WAT - Partagez votre univers (vidéos, musique, photos) entre amis
 ## WAT - Share your videos, music and photos with your friends
 ## Si vous appreciez ce script, utilisez le site WAT !
 ## If you like this script, use WAT !
 ##
-## Plus d'informations : http://www.labsmedia.fr/clickheat/performance.html
-## More information: http://www.labsmedia.com/clickheat/performance.html
+## Plus d'informations : http://www.dugwood.fr/clickheat/performance.html
+## More information: http://www.dugwood.com/clickheat/performance.html
 ##
 ## @author Vincent Audino pour WAT - www.wat.tv
 ## @since 03/28/2007
@@ -49,7 +49,7 @@ open(LOGFILE, $srcFile) or die("Impossible d'ouvrir le fichier ".$srcFile);
 
 while(<LOGFILE>)
 {
-    if (/.*clickheat.*/ 
+    if (/.*clickheat.*/
 	&& ($ignored eq "" || !/.*http:\/\/.*$ignored.*/) )
     {
 	if (s/.*\[(.*)\].*g=(.*)&x=([0-9]*)&y=([0-9]*)&w=([0-9]*)&b=(.*)&c=([0-9])&random=(.*) HTTP.* \"(http:\/\/.*)\" \".*\" .*/$1, $2, $3, $4, $5, $6, $7, $8, $9/)
@@ -58,7 +58,7 @@ while(<LOGFILE>)
 	    $page = 'none' if ($page eq '');
 
 	    $date =~ s#^(....)(..)(..)(..):(..):(..)#$1-$2-$3#;
-	    
+
 	    my $writeDir = $destPath.$page;
 	    my $writeFile = $writeDir.'/'.$date.'.log';
 	    mkdir($writeDir) if (!-d $destPath.$page);
@@ -72,7 +72,7 @@ while(<LOGFILE>)
 	    {
 		open(my $fd, ">>".$writeFile) or die ("Erreur d'ouverture de " . $writeFile);
 		chmod 0606, $writeFile;
-		
+
 		if (keys(%fdcache) == $maxcached)
 		{
 		    # cache plein
@@ -82,9 +82,9 @@ while(<LOGFILE>)
 		    pop @fdcache;
 		    %fdcache = @fdcache;
 		}
-		
+
 		$fdcache{$writeFile} = $fd;
-		
+
 		$currentfd = $fdcache{$writeFile};
 	    }
 	    print $currentfd $x.'|'.$y.'|'.$w.'|'.$browser.'|'.$c."\n";
@@ -96,10 +96,10 @@ while(<LOGFILE>)
 	    if ($referer ne '')
 	    {
 		$writeFile = $writeDir . '/url.txt';
-		
+
 		if (!-f $writeFile)
 		{
-		    open(my $fd,">".$writeFile) or die ("Erreur d'ouverture de " . $writeFile) ;		    
+		    open(my $fd,">".$writeFile) or die ("Erreur d'ouverture de " . $writeFile) ;
 		    chmod 0606, $writeFile;
 		    print $fd $referer.'>0>0>0';
 		    close $fd;

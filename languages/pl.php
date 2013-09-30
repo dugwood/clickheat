@@ -57,8 +57,8 @@ define('LANG_JAVASCRIPT_SITE', 'Nazwa witryny (dozwolone znaki: A-Z, a-z, 0-9, p
 define('LANG_JAVASCRIPT_GROUP', 'Nazwa grupy, w celu grupowania podobnych stron - ułatwia to analizę wyników');
 define('LANG_JAVASCRIPT_GROUP0', 'użyj słowa kluczowego');
 define('LANG_JAVASCRIPT_GROUP1', 'dozwolone znaki: A-Z, a-z, 0-9, podkreślnik, myślnik, kropka');
-define('LANG_JAVASCRIPT_GROUP2', 'użyj tytułu strony (<a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">nie zalecane</a>)');
-define('LANG_JAVASCRIPT_GROUP3', 'użyj adresu strony (<a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">nie zalecane</a>)');
+define('LANG_JAVASCRIPT_GROUP2', 'użyj tytułu strony (<a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">nie zalecane</a>)');
+define('LANG_JAVASCRIPT_GROUP3', 'użyj adresu strony (<a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">nie zalecane</a>)');
 define('LANG_JAVASCRIPT_PASTE', 'Skopiuj i wklej poniższy kod do źródła swojej strony, zaraz przed końcem ciała dokumentu (before &lt;/body&gt; tag):');
 define('LANG_JAVASCRIPT_DEBUG', 'Po wklejeniu kodu nie zapomnij go przetstować. Aby to zrobić wywołaj stronę z parametrem <span class="error">debugclickheat</span>. Na przykład dla adresu: http://www.strona.com/index.html wywołaj http://www.strona.com/index.html<span class="error">?debugclickheat</span>. Powinieneś zobaczyć komunikat z informacją o stanie systemu ClickHeat. Jeśli spotkasz się z problemem, możesz śmiało poprosić nas o pomoc.');
 define('LANG_NO_CLICK_BELOW', 'No clicks recorded beneath this line'); // Leave this line in English please
@@ -94,7 +94,7 @@ define('LANG_CONFIG_REFERERS', 'Nazwy domen (oddzielone przecinkami) uprawnionyc
 define('LANG_CONFIG_GROUPS', 'Nazwy grup (oddzielone przecinkami) uprawnionych do zliczania kliknięć na tym serwerze');
 define('LANG_CONFIG_FILESIZE', 'Maksymalny rozmiar pliku z danymi (w KB) grupy w ciągu dnia (1000 kliknięć to ok 25KB, 0 = bez limitu)');
 define('LANG_CONFIG_CHECK', 'Sprawdź konfigurację');
-define('LANG_CONFIG_MEMORY', 'Ograniczenie pamięci (domyślnia wartość w php.ini: %dMB, limity: od %d do %dMB, ale <a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">bądź ostrożny z wysokimi wartościami</a>)');
+define('LANG_CONFIG_MEMORY', 'Ograniczenie pamięci (domyślnia wartość w php.ini: %dMB, limity: od %d do %dMB, ale <a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">bądź ostrożny z wysokimi wartościami</a>)');
 define('LANG_CONFIG_MEMORY_KO', 'proszę wpisać wartość mieszczącą się w opisanym przedziale');
 define('LANG_CONFIG_STEP', 'Grupowanie kliknięć strefami (przyspiesza wyświetlanie heatmap)');
 define('LANG_CONFIG_STEP_KO', 'strefy nie mogą byc mniejsze niż 1x1 piksel');

@@ -1,17 +1,17 @@
 <?php
+
 /**
  * ClickHeat : Classe de génération des cartes depuis un fichier de coordonnées X,Y / Maps generation class from a X,Y coords file
- * 
+ *
  * Cette classe est VOLONTAIREMENT écrite pour PHP 4
  * This class is VOLUNTARILY written for PHP 4
- * 
+ *
  * Utilisation : jettez un oeil au répertoire /examples/
  * Usage: have a look into /examples/ directory
- * 
- * @author Yvan Taviaud - LabsMedia - www.labsmedia.com
+ *
+ * @author Yvan Taviaud - Dugwood - www.dugwood.com
  * @since 19/05/2007
-**/
-
+ */
 class HeatmapFromFile extends Heatmap
 {
 	/** @var array $files Fichiers de suivi à étudier / Logfiles to use */
@@ -34,7 +34,7 @@ class HeatmapFromFile extends Heatmap
 
 	/**
 	 * Do some tasks before drawing (database connection...)
-	**/
+	 */
 	function startDrawing()
 	{
 		return true;
@@ -45,7 +45,7 @@ class HeatmapFromFile extends Heatmap
 	 *
 	 * @param integer $image Number of the image (to be used with $this->height)
 	 * @return boolean Success
-	**/
+	 */
 	function drawPixels($image)
 	{
 		if (count($this->files) === 0)
@@ -111,14 +111,14 @@ class HeatmapFromFile extends Heatmap
 		}
 		return true;
 	}
-		
+
 	/**
 	 * Do some cleaning or ending tasks (close database, reset array...)
-	**/
+	 */
 	function finishDrawing()
 	{
 		$this->files = array();
 		return true;
 	}
+
 }
-?>

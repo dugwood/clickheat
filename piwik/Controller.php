@@ -2,11 +2,11 @@
 
 /**
  * ClickHeat - Clicks' heatmap
- * 
- * @link http://www.labsmedia.com/clickheat/index.html
+ *
+ * @link http://www.dugwood.com/clickheat/index.html
  * @license http://www.gnu.org/licenses/gpl-3.0.html Gpl v3 or later
  * @version $Id: ClickHeat.php 377 2008-03-14 22:36:46Z matt $
- * 
+ *
  * @package Piwik_ClickHeat
  */
 class Piwik_ClickHeat_Controller extends Piwik_Controller
@@ -294,5 +294,3 @@ class Piwik_ClickHeat_Controller extends Piwik_Controller
 	}
 
 }
-
-?>

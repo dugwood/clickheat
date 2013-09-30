@@ -1,27 +1,27 @@
 /**
-** Main functions for administration of ClickHeat
-**
-** @author Yvan Taviaud - Labsmedia.com
-** @since 01/04/2007
-**/
+ ** Main functions for administration of ClickHeat
+ **
+ ** @author Yvan Taviaud - Dugwood - www.dugwood.com
+ ** @since 01/04/2007
+ **/
 
 var currentAlpha = 80,
-lastDayOfMonth = 0,
-weekDays = [],
-currentDate = [0, 0, 0, 0, 0, 0],
-currentRange = 'd',
-currentWidth = 0,
-pleaseWait = '',
-cleanerRunning = '',
-isJsOkay = '',
-jsAdminCookie = '',
-hideIframes = true,
-hideFlashes = true,
-isPiwikModule = false,
-scriptPath = '',
-scriptIndexPath = '';
+		lastDayOfMonth = 0,
+		weekDays = [],
+		currentDate = [0, 0, 0, 0, 0, 0],
+		currentRange = 'd',
+		currentWidth = 0,
+		pleaseWait = '',
+		cleanerRunning = '',
+		isJsOkay = '',
+		jsAdminCookie = '',
+		hideIframes = true,
+		hideFlashes = true,
+		isPiwikModule = false,
+		scriptPath = '',
+		scriptIndexPath = '';
 
-/** Show layout's parameters */
+/* Show layout's parameters */
 function showRadioLayout()
 {
 	for (var i = 0; i < 7; i += 1)
@@ -30,7 +30,7 @@ function showRadioLayout()
 	}
 }
 
-/** Change Alpha on heatmap */
+/* Change Alpha on heatmap */
 function changeAlpha(alpha)
 {
 	document.getElementById('alpha-level-' + currentAlpha).style.borderTop = '1px solid #888';
@@ -51,7 +51,7 @@ function changeAlpha(alpha)
 	}
 }
 
-/** Returns the "top" value of an element */
+/* Returns the "top" value of an element */
 function getTop(obj)
 {
 	if (obj.offsetParent)
@@ -64,7 +64,7 @@ function getTop(obj)
 	}
 }
 
-/** Resize the div relative to window height and selected screen size */
+/* Resize the div relative to window height and selected screen size */
 function resizeDiv()
 {
 	var oD = document.documentElement && document.documentElement.clientHeight !== 0 ? document.documentElement : document.body, iH = oD.innerHeight || oD.clientHeight, iW = oD.innerWidth || oD.clientWidth;
@@ -83,7 +83,7 @@ function resizeDiv()
 	document.getElementById('webPageFrame').style.width = currentWidth - 25 + 'px';
 }
 
-/** Ajax object */
+/* Ajax object */
 function getXmlHttp()
 {
 	var xmlhttp = false;
@@ -109,7 +109,7 @@ function getXmlHttp()
 	return xmlhttp;
 }
 
-/** Ajax request to update PNGs */
+/* Ajax request to update PNGs */
 function updateHeatmap()
 {
 	var xmlhttp, screen = 0;
@@ -124,7 +124,7 @@ function updateHeatmap()
 		screen = document.getElementById('formScreen').value;
 	}
 	xmlhttp.open('GET', scriptIndexPath + 'action=generate&group=' + document.getElementById('formGroup').value + '&screen=' + screen + '&browser=' + document.getElementById('formBrowser').value + '&date=' + currentDate[2] + '-' + currentDate[1] + '-' + currentDate[0] + '&range=' + currentRange + '&heatmap=' + (document.getElementById('formHeatmap').checked ? '1' : '0') + '&rand=' + Date(), true);
-	xmlhttp.onreadystatechange = function ()
+	xmlhttp.onreadystatechange = function()
 	{
 		if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
 		{
@@ -136,7 +136,7 @@ function updateHeatmap()
 	xmlhttp.send(null);
 }
 
-/** Update calendar selected days */
+/* Update calendar selected days */
 function updateCalendar(day)
 {
 	var min, max, week, d;
@@ -144,32 +144,32 @@ function updateCalendar(day)
 	{
 		return;
 	}
-	/** currentDate[day, month, year, saved_day, month_origin, year_origin] */
+	/* currentDate[day, month, year, saved_day, month_origin, year_origin] */
 	if (day)
 	{
 		currentDate[3] = day;
 	}
 	currentDate[1] = currentDate[4];
 	currentDate[2] = currentDate[5];
-	/** Showing one day */
+	/* Showing one day */
 	if (currentRange === 'd')
 	{
-		/** Remember the last day used */
+		/* Remember the last day used */
 		currentDate[0] = currentDate[3];
 		min = currentDate[0];
 		max = currentDate[0];
 	}
-	/** Showing one month */
+	/* Showing one month */
 	if (currentRange === 'm')
 	{
 		currentDate[0] = 1;
 		min = 1;
 		max = weekDays.length;
 	}
-	/** Showing one week */
+	/* Showing one week */
 	if (currentRange === 'w')
 	{
-		/** Remember the last day used */
+		/* Remember the last day used */
 		currentDate[0] = currentDate[3];
 		week = weekDays[currentDate[0]];
 		min = 0;
@@ -186,7 +186,7 @@ function updateCalendar(day)
 				max = d;
 			}
 		}
-		/** Start was on the previous month */
+		/* Start was on the previous month */
 		if (min === 1 && max !== 7)
 		{
 			currentDate[0] = lastDayOfMonth - 6 + max;
@@ -219,13 +219,13 @@ function updateCalendar(day)
 	updateHeatmap();
 }
 
-/** Ajax request to show group layout */
+/* Ajax request to show group layout */
 function showGroupLayout()
 {
 	var xmlhttp;
 	xmlhttp = getXmlHttp();
 	xmlhttp.open('GET', scriptIndexPath + 'action=layout&group=' + document.getElementById('formGroup').value + '&rand=' + Date(), true);
-	xmlhttp.onreadystatechange = function ()
+	xmlhttp.onreadystatechange = function()
 	{
 		if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
 		{
@@ -237,21 +237,21 @@ function showGroupLayout()
 	xmlhttp.send(null);
 }
 
-/** Hide group layout */
+/* Hide group layout */
 function hideGroupLayout()
 {
 	document.getElementById('layoutDiv').style.display = 'none';
 	document.getElementById('layoutDiv').innerHTML = '';
 }
 
-/** Update JS code in display */
+/* Update JS code in display */
 function updateJs()
 {
 	var str = '',
-	language = (navigator.language && navigator.language === 'fr' ? 'fr' : 'com'),
-	addReturn = document.getElementById('jsShort').checked ? '' : '<br />',
-	linkList = [],
-	rand;
+			language = (navigator.language && navigator.language === 'fr' ? 'fr' : 'com'),
+			addReturn = document.getElementById('jsShort').checked ? '' : '<br />',
+			linkList = [],
+			rand;
 	str += '&lt;script type="text/javascript" src="';
 	str += scriptPath + 'js/clickheat.js"&gt;&lt;/script&gt;' + addReturn;
 	if (language === 'fr')
@@ -264,7 +264,7 @@ function updateJs()
 	}
 	if (document.getElementById('jsShowImage').checked)
 	{
-		str += '&lt;a href="http://www.labsmedia.' + language + '/clickheat/index.html" title="ClickHeat: clicks heatmap"&gt;&lt;img src="' + scriptPath + 'images/logo.png" width="80" height="15" border="0" alt="ClickHeat : track clicks" /&gt;&lt;/a&gt;' + addReturn;
+		str += '&lt;a href="http://www.dugwood.' + language + '/clickheat/index.html" title="ClickHeat: clicks heatmap"&gt;&lt;img src="' + scriptPath + 'images/logo.png" width="80" height="15" border="0" alt="ClickHeat : track clicks" /&gt;&lt;/a&gt;' + addReturn;
 	}
 	else
 	{
@@ -274,7 +274,7 @@ function updateJs()
 	str += '&lt;script type="text/javascript"&gt;&lt;!--<br />';
 	str += 'clickHeatSite = ';
 	/*jslint regexp: false*/
-	/** Piwik form */
+	/* Piwik form */
 	if (isPiwikModule === true)
 	{
 		/*global piwik: false */
@@ -309,13 +309,13 @@ function updateJs()
 	document.getElementById('clickheat-js').innerHTML = str;
 }
 
-/** Ajax request to show javascript code */
+/* Ajax request to show javascript code */
 function showJsCode()
 {
 	var xmlhttp;
 	xmlhttp = getXmlHttp();
 	xmlhttp.open('GET', scriptIndexPath + 'action=javascript&rand=' + Date(), true);
-	xmlhttp.onreadystatechange = function ()
+	xmlhttp.onreadystatechange = function()
 	{
 		if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
 		{
@@ -327,13 +327,13 @@ function showJsCode()
 	xmlhttp.send(null);
 }
 
-/** Ajax request to get associated group in iframe */
+/* Ajax request to get associated group in iframe */
 function loadIframe()
 {
 	var xmlhttp;
 	xmlhttp = getXmlHttp();
 	xmlhttp.open('GET', scriptIndexPath + 'action=iframe&group=' + document.getElementById('formGroup').value + '&rand=' + Date(), true);
-	xmlhttp.onreadystatechange = function ()
+	xmlhttp.onreadystatechange = function()
 	{
 		if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
 		{
@@ -352,7 +352,7 @@ function loadIframe()
 	xmlhttp.send(null);
 }
 
-/** Show layout's parameters */
+/* Show layout's parameters */
 function saveGroupLayout()
 {
 	var i, xmlhttp;
@@ -370,7 +370,7 @@ function saveGroupLayout()
 	}
 	xmlhttp = getXmlHttp();
 	xmlhttp.open('GET', scriptIndexPath + 'action=layoutupdate&group=' + document.getElementById('formGroup').value + '&url=' + encodeURIComponent(document.getElementById('formUrl').value) + '&left=' + document.getElementById('layout-left-' + i).value + '&right=' + document.getElementById('layout-right-' + i).value + '&center=' + document.getElementById('layout-center-' + i).value + '&rand=' + Date(), true);
-	xmlhttp.onreadystatechange = function ()
+	xmlhttp.onreadystatechange = function()
 	{
 		if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
 		{
@@ -385,7 +385,7 @@ function saveGroupLayout()
 	xmlhttp.send(null);
 }
 
-/** Hide iframe's flashes and iframes */
+/* Hide iframe's flashes and iframes */
 function cleanIframe()
 {
 	var currentIframeContent, currentIframe, newContent, pos, pos2, reg, oldPos, startReg, endReg, found, width, height;
@@ -457,10 +457,11 @@ function cleanIframe()
 		}
 		currentIframeContent.body.innerHTML = newContent;
 	}
-	catch (e) {}
+	catch (e) {
+	}
 }
 
-/** Draw alpha selector */
+/* Draw alpha selector */
 function drawAlphaSelector(obj, max)
 {
 	var str = '', i, grey, alpha;
@@ -478,14 +479,14 @@ function drawAlphaSelector(obj, max)
 	}
 }
 
-/** Ajax request to show javascript code */
+/* Ajax request to show javascript code */
 function runCleaner()
 {
 	document.getElementById('cleaner').innerHTML = cleanerRunning;
 	var xmlhttp;
 	xmlhttp = getXmlHttp();
 	xmlhttp.open('GET', scriptIndexPath + 'action=cleaner&rand=' + Date(), true);
-	xmlhttp.onreadystatechange = function ()
+	xmlhttp.onreadystatechange = function()
 	{
 		if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
 		{
@@ -498,7 +499,7 @@ function runCleaner()
 				document.getElementById('cleaner').innerHTML = xmlhttp.responseText;
 				if (xmlhttp.responseText.indexOf('JSLint') === -1)
 				{
-					setTimeout(function ()
+					setTimeout(function()
 					{
 						document.getElementById('cleaner').innerHTML = '';
 					}, 3000);
@@ -515,13 +516,13 @@ function runCleaner()
 	xmlhttp.send(null);
 }
 
-/** Ajax request to show latest available version */
+/* Ajax request to show latest available version */
 function showLatestVersion()
 {
 	var xmlhttp;
 	xmlhttp = getXmlHttp();
 	xmlhttp.open('GET', scriptIndexPath + 'action=latest&rand=' + Date(), true);
-	xmlhttp.onreadystatechange = function ()
+	xmlhttp.onreadystatechange = function()
 	{
 		if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
 		{
@@ -532,7 +533,7 @@ function showLatestVersion()
 	xmlhttp.send(null);
 }
 
-/** Shows main panel */
+/* Shows main panel */
 function showPanel()
 {
 	var div = (isPiwikModule === true ? 'contenu' : 'adminPanel');
@@ -549,7 +550,7 @@ function showPanel()
 	document.getElementById('divPanel').innerHTML = '<img src="' + scriptPath + 'images/arrow-up.png" width="11" height="6" alt="" />';
 	resizeDiv();
 }
-/** Hides main panel */
+/* Hides main panel */
 function hidePanel()
 {
 	var div = (isPiwikModule === true ? 'contenu' : 'adminPanel');
@@ -563,7 +564,7 @@ function hidePanel()
 	resizeDiv();
 }
 
-/** Reverse the state of the admin cookie (used not to log the clicks for admin user) */
+/* Reverse the state of the admin cookie (used not to log the clicks for admin user) */
 function adminCookie()
 {
 	if (confirm(jsAdminCookie))

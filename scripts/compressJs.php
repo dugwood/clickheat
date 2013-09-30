@@ -2,7 +2,7 @@
 <?php
 /**
  * Compress a JS file using YUI-compressor
- * 
+ *
  * @author Yvan Taviaud
  * @since 29/11/2007
 **/
@@ -13,5 +13,5 @@ if ($str === false)
 }
 Syntax_Compressor::js($str);
 
-file_put_contents(dirname(__FILE__).'/../js/clickheat.js', '/** Code by www.labsmedia.com */'.$str);
+file_put_contents(dirname(__FILE__).'/../js/clickheat.js', '/** Code by www.dugwood.com */'.$str);
 ?>

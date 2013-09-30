@@ -2,7 +2,7 @@
 /**
  * ClickHeat : Fichier de langue : français
  * 
- * @author Yvan Taviaud - LabsMedia - www.labsmedia.com
+ * @author Yvan Taviaud - Dugwood - www.Dugwood.com
  * @since 27/10/2006
 **/
 
@@ -44,7 +44,7 @@ define('LANG_LAYOUT_RIGHT', 'Largeur fixe de droite (pixels)');
 define('LANG_SCREENSIZE', 'Taille d\'écran');
 define('LANG_HEATMAP', 'Carte de chaleur et sa transparence');
 define('LANG_LATEST_CHECK', 'Mise à jour');
-define('LANG_LATEST_KO', 'Impossible de connaître dynamiquement la dernière version disponible, la vôtre est la %s, la toute dernière lue directement depuis le site Labsmedia ');
+define('LANG_LATEST_KO', 'Impossible de connaître dynamiquement la dernière version disponible, la vôtre est la %s, la toute dernière lue directement depuis le site Dugwood ');
 define('LANG_LATEST_OK', 'Vous avez la dernière version disponible (%s)');
 define('LANG_LATEST_NO', 'Votre version (%s) n\'est pas la toute dernière disponible (%s). Vous pouvez télécharger la nouvelle version en vous rendant sur notre site :');
 define('LANG_LOG_MY_CLICKS', 'Enregistrer mes clics ?');
@@ -57,8 +57,8 @@ define('LANG_JAVASCRIPT_SITE', 'Nom du site (caractères autorisés : A-Z, a-z, 
 define('LANG_JAVASCRIPT_GROUP', 'Nom de groupe, pour regrouper les pages similaires pour une analyse simplifiée');
 define('LANG_JAVASCRIPT_GROUP0', 'utiliser un mot-clé ');
 define('LANG_JAVASCRIPT_GROUP1', 'caractères autorisés : A-Z, a-z, 0-9, souligné, tiret, point');
-define('LANG_JAVASCRIPT_GROUP2', 'utiliser le titre de la page (<a href="http://www.labsmedia.fr/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">vivement déconseillé</a>)');
-define('LANG_JAVASCRIPT_GROUP3', 'utiliser l\'adresse de la page (<a href="http://www.labsmedia.fr/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">vivement déconseillé</a>)');
+define('LANG_JAVASCRIPT_GROUP2', 'utiliser le titre de la page (<a href="http://www.Dugwood.fr/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">vivement déconseillé</a>)');
+define('LANG_JAVASCRIPT_GROUP3', 'utiliser l\'adresse de la page (<a href="http://www.Dugwood.fr/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">vivement déconseillé</a>)');
 define('LANG_JAVASCRIPT_PASTE', 'Copiez et collez le code ci-dessous sur vos pages, juste avant la fin de la page (avant le tag &lt;/body&gt;) :');
 define('LANG_JAVASCRIPT_DEBUG', 'Une fois le code copié sur vos pages, n\'oubliez pas de tester si le code marche bien, en appelant votre page avec le paramètre <span class="error">debugclickheat</span>. Par exemple pour http://www.site.com/index.html appelez http://www.site.com/index.html<span class="error">?debugclickheat</span>. Vous devriez alors voir un message vous indiquant l\'état de Clickheat (en anglais). En cas de problème, n\'hésitez pas à nous contacter');
 define('LANG_NO_CLICK_BELOW', utf8_decode('Pas de clics enregistrés en-dessous de cette ligne'));
@@ -94,7 +94,7 @@ define('LANG_CONFIG_REFERERS', 'Liste des noms de domaine (séparés par des vir
 define('LANG_CONFIG_GROUPS', 'Liste des noms de groupe (séparés par des virgules) autorisés à enregistrer les clics sur ce serveur');
 define('LANG_CONFIG_FILESIZE', 'Taille maximale (en Ko) d\'un fichier de suivi d\'un groupe sur un jour (1000 clics font environ 25Ko, 0 = pas de limite)');
 define('LANG_CONFIG_CHECK', 'Vérifier la configuration');
-define('LANG_CONFIG_MEMORY', 'Limite mémoire (valeur par défaut du php.ini : %dMo, limites : de %d à %dMo, mais <a href="http://www.labsmedia.fr/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">attention aux grandes valeurs</a>)');
+define('LANG_CONFIG_MEMORY', 'Limite mémoire (valeur par défaut du php.ini : %dMo, limites : de %d à %dMo, mais <a href="http://www.Dugwood.fr/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">attention aux grandes valeurs</a>)');
 define('LANG_CONFIG_MEMORY_KO', 'merci de respecter la fourchette de valeurs');
 define('LANG_CONFIG_STEP', 'Groupement des clics par zone de X*X pixels (accélère l\'affichage des cartes de température)');
 define('LANG_CONFIG_STEP_KO', 'les zones ne peuvent pas être en deçà de 1x1 pixels');

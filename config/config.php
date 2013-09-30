@@ -1,13 +1,13 @@
 <?php $clickheatConf = array (
   'logPath' => '/data/projects/clickheat/logs/',
   'cachePath' => '/data/projects/clickheat/cache/',
-  'referers' => 
+  'referers' =>
   array (
-    0 => 'www.labsmedia.com',
-    1 => 'www.labsmedia.fr',
-    2 => 'projects.labsmedia.com',
+    0 => 'www.dugwood.com',
+    1 => 'www.dugwood.fr',
+    2 => 'projects.dugwood.com',
   ),
-  'groups' => 
+  'groups' =>
   array (
     0 => 'clickheat',
     1 => 'index',
@@ -29,7 +29,7 @@
   'yesterday' => false,
   'alpha' => 80,
   'version' => '1.14',
-  '__screenSizes' => 
+  '__screenSizes' =>
   array (
     0 => 0,
     1 => 240,
@@ -42,7 +42,7 @@
     8 => 1600,
     9 => 1800,
   ),
-  '__browsersList' => 
+  '__browsersList' =>
   array (
     'all' => '',
     'msie' => 'Internet Explorer',
@@ -52,4 +52,4 @@
     'opera' => 'Opera',
     'unknown' => '',
   ),
-); ?>
+);

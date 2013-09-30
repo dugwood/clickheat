@@ -57,8 +57,8 @@ define('LANG_JAVASCRIPT_SITE', 'Nama situs web (karakter yang diperbolehkan: A-Z
 define('LANG_JAVASCRIPT_GROUP', 'Nama grup, untuk mengelompokkan halaman yang sama untuk analisis yang lebih sederhana');
 define('LANG_JAVASCRIPT_GROUP0', 'Pakai sebuah kata kunci');
 define('LANG_JAVASCRIPT_GROUP1', 'karakter yang diijinkan: A-Z, a-z, 0-9,garis bawah, tanda hubung, titik');
-define('LANG_JAVASCRIPT_GROUP2', 'pergunakan judul halaman web (<a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">tidak direkomendasikan</a>)');
-define('LANG_JAVASCRIPT_GROUP3', 'pergunakan URL halaman web (<a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">tidak direkomendasikan</a>)');
+define('LANG_JAVASCRIPT_GROUP2', 'pergunakan judul halaman web (<a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">tidak direkomendasikan</a>)');
+define('LANG_JAVASCRIPT_GROUP3', 'pergunakan URL halaman web (<a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">tidak direkomendasikan</a>)');
 define('LANG_JAVASCRIPT_PASTE', 'Salin dan tempel kode di bawah ini pada halaman Anda, sebelum akhir dari halaman (sebelum tag &lt;/body&gt;):');
 define('LANG_JAVASCRIPT_DEBUG', 'Setelah kode ditempelkan pada halaman Anda, jangan lupa mencoba jika kode bekerja dengan benar, dengan memanggil halaman Anda dengan parameter <span class="error">debugclickheat</span>. Contoh untuk http://www.site.com/index.html panggil http://www.site.com/index.html<span class="error">?debugclickheat</span>. Anda seharusnya melihat sebuah pesan yang menunjukkan status dari Clickheat. Jika Anda menemukan masalah apapun, silahkan hubungi kami');
 define('LANG_NO_CLICK_BELOW', 'Tidak ada klik yang terekam di bawah baris ini'); // Leave this line in English please
@@ -94,7 +94,7 @@ define('LANG_CONFIG_REFERERS', 'Nama domain (dipisahkan dengan koma) yang diperb
 define('LANG_CONFIG_GROUPS', 'Nama grup (dipisahkan dengan koma) yang diperbolehkan untuk mencatat klik pada server ini');
 define('LANG_CONFIG_FILESIZE', 'Ukuran berkas log maksimum (dalam KB) untuk sebuah grup selama sehari (1000 klik adalah sekitar 25KB, 0 = tidak ada batas ukuran)');
 define('LANG_CONFIG_CHECK', 'Periksa konfigurasi');
-define('LANG_CONFIG_MEMORY', 'Batas memori (Nilai bawaaan php.ini: %dMB, batas: dari %d ke %dMB, tapi <a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">hati-hati dengan nilai tinggi</a>)');
+define('LANG_CONFIG_MEMORY', 'Batas memori (Nilai bawaaan php.ini: %dMB, batas: dari %d ke %dMB, tapi <a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">hati-hati dengan nilai tinggi</a>)');
 define('LANG_CONFIG_MEMORY_KO', 'Harap tetap berada pada batas jangkauan yang ditentukan');
 define('LANG_CONFIG_STEP', 'Pengelompokan klik dengan zona piksel X*X (mempercepat penampilan peta suhu)');
 define('LANG_CONFIG_STEP_KO', 'zona tidak diperbolehkan di bawah 1x1 piksel');

@@ -44,7 +44,7 @@ define('LANG_LAYOUT_RIGHT', '右侧固定宽度大小(单位：像素pixels)');
 define('LANG_SCREENSIZE', '屏幕大小');
 define('LANG_HEATMAP', '热图样式和覆盖层透明度');
 define('LANG_LATEST_CHECK', '升级');
-define('LANG_LATEST_KO', '获取最新版本发生错误，你使用的当前版本为 %s, 请访问Labsmedia\'s 网站检查更新');
+define('LANG_LATEST_KO', '获取最新版本发生错误，你使用的当前版本为 %s, 请访问Dugwood\'s 网站检查更新');
 define('LANG_LATEST_OK', '你使用的是最新版本：(%s)');
 define('LANG_LATEST_NO', '你使用的版本为 (%s), 目前最新版本为 (%s). 你可以从以下站点下载最新版：');
 define('LANG_LOG_MY_CLICKS', '是否记录自己的点击');
@@ -57,8 +57,8 @@ define('LANG_JAVASCRIPT_SITE', '网址 (允许字符: A-Z, a-z, 0-9, 下划线, 
 define('LANG_JAVASCRIPT_GROUP', '分组名, 将类似的页面分组记录成单独的统计页面');
 define('LANG_JAVASCRIPT_GROUP0', '分组名称');
 define('LANG_JAVASCRIPT_GROUP1', '允许字符: A-Z, a-z, 0-9, 下划线, 连字号, 点');
-define('LANG_JAVASCRIPT_GROUP2', '使用页面标题 (<a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">不推荐</a>)');
-define('LANG_JAVASCRIPT_GROUP3', '使用页面URL (<a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">不推荐</a>)');
+define('LANG_JAVASCRIPT_GROUP2', '使用页面标题 (<a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">不推荐</a>)');
+define('LANG_JAVASCRIPT_GROUP3', '使用页面URL (<a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">不推荐</a>)');
 define('LANG_JAVASCRIPT_PASTE', '将以下代码粘贴到你的页面HTML文件结束之前 (在 &lt;/body&gt; 标记之前):');
 define('LANG_JAVASCRIPT_DEBUG', '代码粘贴到页面之后，不要忘记测试该配置是否正确。方法：将参数<span class="error">debugclickheat</span>附加到你的请求页面URL中. 比如测试 http://www.site.com/index.html，则调用 http://www.site.com/index.html<span class="error">?debugclickheat</span>. 你会看到一个clickheat的测试状态区域. 如果有任何疑问，请和我们取得联系。');
 define('LANG_NO_CLICK_BELOW', 'No clicks recorded beneath this line'); // Leave this line in English please，CHINESE IS： 本线以下没有点击
@@ -94,7 +94,7 @@ define('LANG_CONFIG_REFERERS', '域名列表 (使用,分隔) 允许记录的域�
 define('LANG_CONFIG_GROUPS', '分组列表 (使用,分隔) 允许记录的分组名称列表');
 define('LANG_CONFIG_FILESIZE', '每天单个分组允许的最大日志文件大小，单位KB(1000 个点击记录大约 25KB, 0 = 不限制)');
 define('LANG_CONFIG_CHECK', '检查配置');
-define('LANG_CONFIG_MEMORY', '内存限制(php.ini默认值: %dMB, 大小限制: 从 %d 到 %dMB, 但<a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">请小心使用较大的内存设置</a>)');
+define('LANG_CONFIG_MEMORY', '内存限制(php.ini默认值: %dMB, 大小限制: 从 %d 到 %dMB, 但<a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">请小心使用较大的内存设置</a>)');
 define('LANG_CONFIG_MEMORY_KO', '输入值超出可用范围');
 define('LANG_CONFIG_STEP', '合并点击区域范围(将提升热图的显示)');
 define('LANG_CONFIG_STEP_KO', '点击区域范围不能小于1x1像素');

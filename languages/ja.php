@@ -57,8 +57,8 @@ define('LANG_JAVASCRIPT_SITE', 'ウェブサイト名（許可された文字：
 define('LANG_JAVASCRIPT_GROUP', 'グループ名（類似的なページを単純に分析するため）');
 define('LANG_JAVASCRIPT_GROUP0', 'キーワードを利用：');
 define('LANG_JAVASCRIPT_GROUP1', '許可された文字：A-Z, a-z, 0-9, アンダースコア【_】, ハイフン【-】, ドット【.】');
-define('LANG_JAVASCRIPT_GROUP2', 'ページのタイトルを使用（<a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">非推奨</a>）');
-define('LANG_JAVASCRIPT_GROUP3', 'ウェブページのアドレスを使用：（<a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">非推奨</a>）');
+define('LANG_JAVASCRIPT_GROUP2', 'ページのタイトルを使用（<a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">非推奨</a>）');
+define('LANG_JAVASCRIPT_GROUP3', 'ウェブページのアドレスを使用：（<a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">非推奨</a>）');
 define('LANG_JAVASCRIPT_PASTE', '以下のコードをページの最後にコピー＆ペーストしてください。（&lt;/body&gt;タグの前など）：');
 define('LANG_JAVASCRIPT_DEBUG', 'コードの設置が完了したら<span class="error">debugclickheat</span>パラメータをつけた状態でページを読み込むのを忘れないでください。（例えば設置したURLが http://www.site.com/index.html の場合、 http://www.site.com/index.html<span class="error">?debugclickheat</span> を呼び出してください。Clickheatの動作確認のメッセージが見れるはずです。問題に遭遇したら気軽にお問い合わせください。');
 define('LANG_NO_CLICK_BELOW', 'No clicks recorded beneath this line'); // Leave this line in English please
@@ -94,7 +94,7 @@ define('LANG_CONFIG_REFERERS', 'クリックを記録するドメイン名の一
 define('LANG_CONFIG_GROUPS', 'クリックを記録するグループの一覧（コンマ区切り）');
 define('LANG_CONFIG_FILESIZE', 'グループごとの1日の最大ログファイルサイズ（KB）（1000回のクリックはおおよそ25KBです。0 = サイズ制限なし）');
 define('LANG_CONFIG_CHECK', '設定の確認');
-define('LANG_CONFIG_MEMORY', 'メモリ制限（php.iniのデフォルトは %d MBです。%d ～ %d MBの値で入力してください。）【<a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">高い設定値には注意が必要です</a>】');
+define('LANG_CONFIG_MEMORY', 'メモリ制限（php.iniのデフォルトは %d MBです。%d ～ %d MBの値で入力してください。）【<a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">高い設定値には注意が必要です</a>】');
 define('LANG_CONFIG_MEMORY_KO', '記載された範囲内で指定ください。');
 define('LANG_CONFIG_STEP', 'クリックを指定したピクセルでグループ化（ヒートマップの表示が高速化します）');
 define('LANG_CONFIG_STEP_KO', '1ピクセル未満でのグループ化はできません。');

@@ -6,8 +6,8 @@ rm clickheat-*.zip
 ./scripts/compressJs.php
 cp -R *.html *.php js/ classes/ examples/ styles/ images/ languages/ scripts/ INSTALL LISEZMOI VERSION LICENSE README clickheat
 # Version du fichier :
-echo "<?php define('CLICKHEAT_VERSION', '$VERSION'); ?>" > clickheat/version.php
-echo "<?php define('CLICKHEAT_VERSION', '$VERSION'); ?>" > version.php
+echo "<?php define('CLICKHEAT_VERSION', '$VERSION');" > clickheat/version.php
+echo "<?php define('CLICKHEAT_VERSION', '$VERSION');" > version.php
 echo "$VERSION" > version.txt
 mkdir clickheat/config
 echo "Deny From All" > clickheat/config/.htaccess

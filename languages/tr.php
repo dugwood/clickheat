@@ -45,7 +45,7 @@ define('LANG_LAYOUT_RIGHT', 'Sabit sağ boşluk (pixel olarak)');
 define('LANG_SCREENSIZE', 'Ekran çözünürlüğü');
 define('LANG_HEATMAP', 'Sıcaklık haritası ve şeffaflık değeri');
 define('LANG_LATEST_CHECK', 'Güncelle');
-define('LANG_LATEST_KO', 'Güncel sürüm bilgisine ulaşılamıyor, kullandığınız sürüm %s, güncel sürüm bilgisine Labsmedia sitesinden ulaşabilirsiniz.');
+define('LANG_LATEST_KO', 'Güncel sürüm bilgisine ulaşılamıyor, kullandığınız sürüm %s, güncel sürüm bilgisine Dugwood sitesinden ulaşabilirsiniz.');
 define('LANG_LATEST_OK', 'En güncel sürümü kullanıyorsunuz (%s)');
 define('LANG_LATEST_NO', 'Kullanmış olduğunuz (%s) sürümünden daha güncel bir sürüm (%s) mevcut. Güncel sürümü sitemiz üzerinden indirebilirsiniz:');
 define('LANG_LOG_MY_CLICKS', 'Tıklarınız kayıt altına alınsın mı?');
@@ -58,8 +58,8 @@ define('LANG_JAVASCRIPT_SITE', 'Website adı (izin verilen karakterler: A-Z, a-z
 define('LANG_JAVASCRIPT_GROUP', 'Grup adı, benzer sayfaları gruplamak için');
 define('LANG_JAVASCRIPT_GROUP0', 'bir anahtar kelime kullan');
 define('LANG_JAVASCRIPT_GROUP1', 'izin verilen karakterler: A-Z, a-z, 0-9, alt çizgi, boşluk, nokta');
-define('LANG_JAVASCRIPT_GROUP2', 'sayfa başlığı kullan (<a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">önerilmez</a>)');
-define('LANG_JAVASCRIPT_GROUP3', 'site adresi kullan (<a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">önerilmez</a>)');
+define('LANG_JAVASCRIPT_GROUP2', 'sayfa başlığı kullan (<a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">önerilmez</a>)');
+define('LANG_JAVASCRIPT_GROUP3', 'site adresi kullan (<a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">önerilmez</a>)');
 define('LANG_JAVASCRIPT_PASTE', 'Alt kısımda görünen kodu kopyalayıp kayıt altına almak istediğiniz sayfaların bitiminden önce ekleyin (&lt;/body&gt; komutundan önce):');
 define('LANG_JAVASCRIPT_DEBUG', 'Size verilen kodu sitenize ekleme işleminin ardından kodun çalıp çalışmadığını <span class="error">debugclickheat</span> komutu ile test edin. Örnek: http://www.site.com/index.html sitesine kodu ekledi iseniz şu adrese ulaşın http://www.site.com/index.html<span class="error">?debugclickheat</span>. Clickheat tarafından oluşturlan bir ileti görmelisiniz. Bir hata ile karşılaşırsanız lütfen bizimle iletişime geçin');
 define('LANG_NO_CLICK_BELOW', 'No clicks recorded beneath this line'); // Leave this line in English please
@@ -95,7 +95,7 @@ define('LANG_CONFIG_REFERERS', 'Bu sunucuda kayıt altına alınacak alan adlar�
 define('LANG_CONFIG_GROUPS', 'Bu sunucuda kayıt altına alınacak grup adları (virgül ile ayrılmış)');
 define('LANG_CONFIG_FILESIZE', 'Bir grupta tutulacak olan kayıtların azami kayıt dosyası boyutu (KB olarak) (1000 tık yaklaşık 25KB, 0 = sınırsız)');
 define('LANG_CONFIG_CHECK', 'Ayarları denetle');
-define('LANG_CONFIG_MEMORY', 'Hafıza sınırı (varsayılan php.ini değeri: %dMB, sınırlar: %d dan %dMB a kadar, fakat <a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">yüksek değerlere dikkat edin.</a>)');
+define('LANG_CONFIG_MEMORY', 'Hafıza sınırı (varsayılan php.ini değeri: %dMB, sınırlar: %d dan %dMB a kadar, fakat <a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">yüksek değerlere dikkat edin.</a>)');
 define('LANG_CONFIG_MEMORY_KO', 'lütfen belirtilen aralığı kullanın');
 define('LANG_CONFIG_STEP', 'Tıklamalar X*X pixele göre gruplandırılıyor\' alan (Sıcaklık haritası(Heatmap) gösterim hızını arttırın)');
 define('LANG_CONFIG_STEP_KO', 'alanlar 1x1 pixel boyutundan küçük olamaz');

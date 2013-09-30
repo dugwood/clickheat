@@ -1,12 +1,11 @@
 <?php
 /**
  * ClickHeat : Fonctions diverses / Various functions
- * 
- * @author Yvan Taviaud - LabsMedia - www.labsmedia.com
+ *
+ * @author Yvan Taviaud - Dugwood - www.dugwood.com
  * @since 01/04/2007
-**/
-
-/** Direct call forbidden */
+ */
+/* Direct call forbidden */
 if (!defined('CLICKHEAT_LANGUAGE'))
 {
 	exit;
@@ -19,7 +18,7 @@ if (CLICKHEAT_ADMIN === false)
 	return false;
 }
 
-/** Check for JS validation */
+/* Check for JS validation */
 if (strpos($_SERVER['REQUEST_URI'], 'debugjs') !== false)
 {
 	include '/data/engine/classes/Utils.class.php';
@@ -45,7 +44,7 @@ $deletedFiles = 0;
 $deletedDirs = 0;
 /**
  * Clean the logs' directory according to configuration data
-**/
+ */
 if ($clickheatConf['flush'] !== 0 && is_dir($clickheatConf['logPath']) === true)
 {
 	$logDir = dir($clickheatConf['logPath'].'/');
@@ -103,7 +102,7 @@ if ($clickheatConf['flush'] !== 0 && is_dir($clickheatConf['logPath']) === true)
 
 /**
  * Clean the cache directory for every file older than 1 day
-**/
+ */
 if (is_dir($clickheatConf['cachePath']) === true)
 {
 	if ($debug === true)
@@ -156,4 +155,3 @@ if ($deletedDirs + $deletedFiles === 0)
 	return true;
 }
 echo sprintf(LANG_CLEANER_RUN, $deletedFiles, $deletedDirs);
-?>

@@ -1,14 +1,14 @@
 <?php
+
 /**
  * ClickHeat : Classe de génération des cartes depuis un fichier ClickHeat / Maps generation class from a ClickHeat logfile
  *
  * Cette classe est VOLONTAIREMENT écrite pour PHP 4
  * This class is VOLUNTARILY written for PHP 4
  *
- * @author Yvan Taviaud - LabsMedia - www.labsmedia.com
+ * @author Yvan Taviaud - Dugwood - www.dugwood.com
  * @since 12/05/2007
-**/
-
+ */
 class HeatmapFromClicks extends Heatmap
 {
 	/** @var array $files Fichiers de suivi à étudier / Logfiles to use */
@@ -37,7 +37,7 @@ class HeatmapFromClicks extends Heatmap
 
 	/**
 	 * Do some tasks before drawing (database connection...)
-	**/
+	 */
 	function startDrawing()
 	{
 		return true;
@@ -48,7 +48,7 @@ class HeatmapFromClicks extends Heatmap
 	 *
 	 * @param integer $image Number of the image (to be used with $this->height)
 	 * @return boolean Success
-	**/
+	 */
 	function drawPixels($image)
 	{
 		/** If it's not the first image, just use the value stored in the temp files */
@@ -147,7 +147,6 @@ class HeatmapFromClicks extends Heatmap
 						continue;
 					}
 					/** Correction of X for liquid and/or fixed layouts */
-
 					if ($w <= $totalWidth)
 					{
 						/** Display's width is less than fixed content's one, X is absolute, many thanks to «rollenc» for pointing this out and this fix */
@@ -270,11 +269,11 @@ class HeatmapFromClicks extends Heatmap
 
 	/**
 	 * Do some cleaning or ending tasks (close database, reset array...)
-	**/
+	 */
 	function finishDrawing()
 	{
 		$this->files = array();
 		return true;
 	}
+
 }
-?>

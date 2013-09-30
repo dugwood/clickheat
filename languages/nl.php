@@ -44,7 +44,7 @@ define('LANG_LAYOUT_RIGHT', 'Gefixeerde rechter breedte (pixels)');
 define('LANG_SCREENSIZE', 'Scherm grootte');
 define('LANG_HEATMAP', 'Heatmap en de doorzichtigheid');
 define('LANG_LATEST_CHECK', 'Upgrade');
-define('LANG_LATEST_KO', 'Kan dynamische gezien de laatst beschikbare versie niet vinden, de uwe is %s, voor de laatste versie ga naar de Labsmedia webpagina');
+define('LANG_LATEST_KO', 'Kan dynamische gezien de laatst beschikbare versie niet vinden, de uwe is %s, voor de laatste versie ga naar de Dugwood webpagina');
 define('LANG_LATEST_OK', 'U heeft de nieuwste versie (%s)');
 define('LANG_LATEST_NO', 'Uw versie  (%s) is niet de laatste nieuwe (%s). U kunt de laatste nieuwe versie downloaden op onze website:');
 define('LANG_LOG_MY_CLICKS', 'Registeer mijn kliks?');
@@ -57,8 +57,8 @@ define('LANG_JAVASCRIPT_SITE', 'Website naam (toegestane karakters: A-Z, a-z, 0-
 define('LANG_JAVASCRIPT_GROUP', 'Groeps naam, om dezelfde soort paginas te groeperen, voor een eenvoudigere analyse');
 define('LANG_JAVASCRIPT_GROUP0', 'gebruik een zoekwoord');
 define('LANG_JAVASCRIPT_GROUP1', 'toegestane karakters: A-Z, a-z, 0-9, underscore, koppelteken, punt');
-define('LANG_JAVASCRIPT_GROUP2', 'gebruik de webpagina titel (<a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">niet aan te bevelen</a>)');
-define('LANG_JAVASCRIPT_GROUP3', 'gebruik de webpagina URL (<a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">niet aan te bevelen</a>)');
+define('LANG_JAVASCRIPT_GROUP2', 'gebruik de webpagina titel (<a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">niet aan te bevelen</a>)');
+define('LANG_JAVASCRIPT_GROUP3', 'gebruik de webpagina URL (<a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">niet aan te bevelen</a>)');
 define('LANG_JAVASCRIPT_PASTE', 'Kopier en plak de code hieronder op uw paginas, juist voor het einde van de pagina (before &lt;/body&gt; tag):');
 define('LANG_JAVASCRIPT_DEBUG', 'Als de code op uw pagina geplakt is, vergeet dan niet om deze te testen om te kijken of alles goed werkt, door de pagina op te roepen met de parameter <span class="error">debugclickheat</span>. Bijvoorbeeld voor de pagina http://www.site.com/index.html roep op http://www.site.com/index.html<span class="error">?debugclickheat</span>. U zou een statusbericht moeten zien van de Clickheat. Als u een probleem heeft neem contact op met ons');
 define('LANG_NO_CLICK_BELOW', 'No clicks recorded beneath this line'); // Leave this line in English please
@@ -94,7 +94,7 @@ define('LANG_CONFIG_REFERERS', 'Domein namen (gescheiden door commas)  welke toe
 define('LANG_CONFIG_GROUPS', 'Groeps namen (gescheiden door commas) welke toegestaan zijn voor kliks op deze server');
 define('LANG_CONFIG_FILESIZE', 'Maximum grootte logbestand (in KB) van een groep over 1 dag (1000 kliks zijn ongeveer 25KB, 0 = geen limit)');
 define('LANG_CONFIG_CHECK', 'Controleer configuratie');
-define('LANG_CONFIG_MEMORY', 'Geheugen limit standaard php.ini waarde: %dMB, limits: van %d tot %dMB, maar <a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">voorzichtig met hoge waardes</a>)');
+define('LANG_CONFIG_MEMORY', 'Geheugen limit standaard php.ini waarde: %dMB, limits: van %d tot %dMB, maar <a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">voorzichtig met hoge waardes</a>)');
 define('LANG_CONFIG_MEMORY_KO', 'blijf aub in de specifieke waarde');
 define('LANG_CONFIG_STEP', 'Kliks gegroepeerd bij X*X zones (versneld scherm van de heatmappen)');
 define('LANG_CONFIG_STEP_KO', 'zones kunnen niet onder 1x1 pixel zijn');

@@ -44,7 +44,7 @@ define('LANG_LAYOUT_RIGHT', 'Fixní šířka pravé části (v pixelech)');
 define('LANG_SCREENSIZE', 'Velikost obrazovky');
 define('LANG_HEATMAP', 'Teplotní mapa a její průhlednost');
 define('LANG_LATEST_CHECK', 'Aktualizace');
-define('LANG_LATEST_KO', 'Nemohu nalézt automaticky nejnovější verzi, vaše je %s, nejnovější naleznete přímo na stránkách Labsmedia');
+define('LANG_LATEST_KO', 'Nemohu nalézt automaticky nejnovější verzi, vaše je %s, nejnovější naleznete přímo na stránkách Dugwood');
 define('LANG_LATEST_OK', 'Máte poslední dostupnou verzi (%s)');
 define('LANG_LATEST_NO', 'Vaše verze (%s) není nejnovější (%s). Můžete si stáhnout novější z naší stránky:');
 define('LANG_LOG_MY_CLICKS', 'Započítávat mé kliknutí?');
@@ -57,8 +57,8 @@ define('LANG_JAVASCRIPT_SITE', 'Název webové stránky (povolené znaky: A-Z, a
 define('LANG_JAVASCRIPT_GROUP', 'Název skupiny pro seskupení podobných stránek pro jednodušší analýzu');
 define('LANG_JAVASCRIPT_GROUP0', 'použít klíčové slovo');
 define('LANG_JAVASCRIPT_GROUP1', 'povolené znaky: A-Z, a-z, 0-9, podtržítko, spojovník - pomlčka, tečka');
-define('LANG_JAVASCRIPT_GROUP2', 'použít titulek stránky (<a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">nedoporučujeme</a>)');
-define('LANG_JAVASCRIPT_GROUP3', 'použít adresu stránky (<a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">nedoporučujeme</a>)');
+define('LANG_JAVASCRIPT_GROUP2', 'použít titulek stránky (<a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">nedoporučujeme</a>)');
+define('LANG_JAVASCRIPT_GROUP3', 'použít adresu stránky (<a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">nedoporučujeme</a>)');
 define('LANG_JAVASCRIPT_PASTE', 'Zkopírujte a vložte kód zde dole do své stránky, před samotný konec stránky (před značku &lt;/body&gt;):');
 define('LANG_JAVASCRIPT_DEBUG', 'Jakmile je vložíte do vašich stránek kód, nezapoměňte vyzkoušet zdali kód pracuje správně, zavoláním vaší stránky s parametrem <span class="error">debugclickheat</span>. Například http://www.site.com/index.html zavolejte takto: http://www.site.com/index.html<span class="error">?debugclickheat</span>. Měl byste vidět zprávu o stavu Clickheatu. Pokud narazíte na nějaký problém, nebojte se nás kontaktovat');
 define('LANG_NO_CLICK_BELOW', 'No clicks recorded beneath this line'); // Leave this line in English please
@@ -94,7 +94,7 @@ define('LANG_CONFIG_REFERERS', 'Názvy domén (oddělené čárkou) které mají
 define('LANG_CONFIG_GROUPS', 'Jména skupin (oddělená čárkou), které mají povolení ukládat zápisy na tomto serveru');
 define('LANG_CONFIG_FILESIZE', 'Maximální velikost souboru se záznamem (v KB) za skupinu přes den (1000 kliknutí je zhruba 25KB, 0 = žádné omezení velikosti)');
 define('LANG_CONFIG_CHECK', 'Zkontrolovat nastavení');
-define('LANG_CONFIG_MEMORY', 'Limit paměti (výchozí hodnota z php.ini je: %dMB, limity: od %d do %dMB, ale <a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">buďte opatrní při zadávání vyšších hodnot</a>)');
+define('LANG_CONFIG_MEMORY', 'Limit paměti (výchozí hodnota z php.ini je: %dMB, limity: od %d do %dMB, ale <a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">buďte opatrní při zadávání vyšších hodnot</a>)');
 define('LANG_CONFIG_MEMORY_KO', 'prosím dodržte předepsaný rozsah');
 define('LANG_CONFIG_STEP', 'Kliknutí seskupit do zón po X*X pixelech (pro zrychlení zobrazování teplotní mapy)');
 define('LANG_CONFIG_STEP_KO', 'zóny nemohou být menší než 1x1 pixelů');

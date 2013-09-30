@@ -1,9 +1,8 @@
 <?php
-
 /**
  * ClickHeat : Enregistrement d'un clic suivi / Logging of a tracked click
- * 
- * @author Yvan Taviaud - LabsMedia - www.labsmedia.com
+ *
+ * @author Yvan Taviaud - Dugwood - www.dugwood.com
  * @since 27/10/2006
  */
 /* Remove all "//" to enable debugging. Don't forget to disable this when you're done! */
@@ -158,4 +157,3 @@ else
 {
 	echo 'KO, file not writable';
 }
-?>

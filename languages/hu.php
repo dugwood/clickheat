@@ -44,7 +44,7 @@ define('LANG_LAYOUT_RIGHT', 'Jobb oldali rész szélessége (pixel)');
 define('LANG_SCREENSIZE', 'Képernyőméret');
 define('LANG_HEATMAP', 'Hőtérkép és átlátszósága');
 define('LANG_LATEST_CHECK', 'Programfrissítés');
-define('LANG_LATEST_KO', 'Nem sikerült lekérdezni a programfrissítési adatokat, az általad használt verzió: %s, a legfrissebb minden esetben elérhető a Labsmedia weboldalán');
+define('LANG_LATEST_KO', 'Nem sikerült lekérdezni a programfrissítési adatokat, az általad használt verzió: %s, a legfrissebb minden esetben elérhető a Dugwood weboldalán');
 define('LANG_LATEST_OK', 'A legfrissebb programverzió van telepítve (%s)');
 define('LANG_LATEST_NO', 'Az általad használt programverzió (%s) nem a legfrissebb (%s). A legújabb letölthető a weboldalról:');
 define('LANG_LOG_MY_CLICKS', 'Saját kattintások naplózása?');
@@ -57,8 +57,8 @@ define('LANG_JAVASCRIPT_SITE', 'Weboldal neve (megengedett karakterek: A-Z, a-z,
 define('LANG_JAVASCRIPT_GROUP', 'Csoport neve, hogy a hasonló oldalakat könnyebb legyen elemezni');
 define('LANG_JAVASCRIPT_GROUP0', 'saját elnevezés');
 define('LANG_JAVASCRIPT_GROUP1', 'megengedett karakterek: A-Z, a-z, 0-9, "aláhúzás", "kötőjel", "pont"');
-define('LANG_JAVASCRIPT_GROUP2', 'az oldal címe (<a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">nem ajánlott</a>)');
-define('LANG_JAVASCRIPT_GROUP3', 'az oldal webcíme (<a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">nem ajánlott</a>)');
+define('LANG_JAVASCRIPT_GROUP2', 'az oldal címe (<a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">nem ajánlott</a>)');
+define('LANG_JAVASCRIPT_GROUP3', 'az oldal webcíme (<a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">nem ajánlott</a>)');
 define('LANG_JAVASCRIPT_PASTE', 'Másold és illeszd be az alábbi kódot a weboldalad forrásának végére (a &lt;/body&gt; elé):');
 define('LANG_JAVASCRIPT_DEBUG', 'Az oldal módosítása után ellenőrizheted a program működését a <span class="error">debugclickheat</span> paraméter segítségével. Például a következő oldal esetében: http://www.site.com/index.html, így: http://www.site.com/index.html<span class="error">?debugclickheat</span>. Ha minden rendben van, akkor az oldalon a Clickheat állapotára vonatkozó információk jelennek meg. Ha bármilyen problémát tapasztalsz, vedd fel a kapcsolatot velünk');
 define('LANG_NO_CLICK_BELOW', 'No clicks recorded beneath this line'); // Leave this line in English please
@@ -94,7 +94,7 @@ define('LANG_CONFIG_REFERERS', 'Domain nevek (vesszővel elválasztva), amelyekh
 define('LANG_CONFIG_GROUPS', 'Csoport nevek (vesszővel elválasztva), amelyekhez tartozó kattintások rögzítve lesznek');
 define('LANG_CONFIG_FILESIZE', 'Egy csoporthoz tartozó maximális naplófile mérete (KB) naponta (1000 kattintás kb. 25 KB, 0 = nincsen korlát)');
 define('LANG_CONFIG_CHECK', 'Beállítások ellenőrzése');
-define('LANG_CONFIG_MEMORY', 'Memória limit (php.ini alapbeállítás: %dMB, értékek: %d és %dMB között, de <a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">bánj óvatos a magas értékekkel</a>)');
+define('LANG_CONFIG_MEMORY', 'Memória limit (php.ini alapbeállítás: %dMB, értékek: %d és %dMB között, de <a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">bánj óvatos a magas értékekkel</a>)');
 define('LANG_CONFIG_MEMORY_KO', 'kérlek maradj a megadott határokon belül');
 define('LANG_CONFIG_STEP', 'Kattintások csoportosítása X*X pixel-es területen belül (gyorsítja a hőtérkép megjelenítését)');
 define('LANG_CONFIG_STEP_KO', 'a zóna nem lehet 1x1 pixel-nél kisebb');

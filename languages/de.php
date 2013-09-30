@@ -44,7 +44,7 @@ define('LANG_LAYOUT_RIGHT', 'Feste Breite rechts (Pixel)');
 define('LANG_SCREENSIZE', 'Auflösung');
 define('LANG_HEATMAP', 'Zeige als Wärmekarte');
 define('LANG_LATEST_CHECK', 'Update');
-define('LANG_LATEST_KO', 'Kann die neueste verfügbare Version nicht laden. Ihre ist %s, die neueste Version auf der Labsmedia\'s Webseite ist');
+define('LANG_LATEST_KO', 'Kann die neueste verfügbare Version nicht laden. Ihre ist %s, die neueste Version auf der Dugwood\'s Webseite ist');
 define('LANG_LATEST_OK', 'Sie haben die neueste verfügbare Version (%s)');
 define('LANG_LATEST_NO', 'Ihre Version (%s) ist nicht die aktuellste Version (%s). Laden Sie die aktuellste Version von unserer Webseite:');
 define('LANG_LOG_MY_CLICKS', 'Eigene Klicks speichern?');
@@ -57,8 +57,8 @@ define('LANG_JAVASCRIPT_SITE', 'Website-Name (erlaubte Zeichen: A-Z, a-z, 0-9, U
 define('LANG_JAVASCRIPT_GROUP', 'Gruppenname - zum Gruppieren gleicher Seiten für eine einfachere Analyse');
 define('LANG_JAVASCRIPT_GROUP0', 'Stichwort');
 define('LANG_JAVASCRIPT_GROUP1', 'erlaubte Zeichen: A-Z, a-z, 0-9, Unterstrich, Bindestrich, Punkt');
-define('LANG_JAVASCRIPT_GROUP2', 'Name der Webseite verwenden (<a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">nicht empfohlen</a>)');
-define('LANG_JAVASCRIPT_GROUP3', 'Internetadresse der Webseite verwenden (<a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">nicht empfohlen</a>)');
+define('LANG_JAVASCRIPT_GROUP2', 'Name der Webseite verwenden (<a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">nicht empfohlen</a>)');
+define('LANG_JAVASCRIPT_GROUP3', 'Internetadresse der Webseite verwenden (<a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">nicht empfohlen</a>)');
 define('LANG_JAVASCRIPT_PASTE', 'Kopieren und fügen Sie den Code unten auf Ihren Seiten ein, kurz vor Ende der Seite (vor dem &lt;/body&gt;-Tag):');
 define('LANG_JAVASCRIPT_DEBUG', 'Sobald der Code auf Ihren Seiten eingefügt ist, vergessen Sie nicht zu testen, ob der Code korrekt funktioniert. Sie testen Ihre Seite mit dem <span class="error">debugclickheat</span>-Parameter. Beispiel: für http://www.site.com/index.html geben Sie http://www.site.com/index.html <span class="error">?debugclickheat</span> ein. Wenn Sie auf ein Problem stoßen sollten, kontaktieren Sie uns.');
 define('LANG_NO_CLICK_BELOW', 'No clicks recorded beneath this line'); // Leave this line in English please
@@ -94,7 +94,7 @@ define('LANG_CONFIG_REFERERS', 'Domain-Namen (getrennt durch Komma) von denen Kl
 define('LANG_CONFIG_GROUPS', 'Gruppen-Namen (getrennt durch Komma) von denen Klicks auf diesen Server mitgeloggt werden.');
 define('LANG_CONFIG_FILESIZE', 'Maximale Größe der Sicherungsdateien in KB (1000 Klicks sind etwa 25KB, 0 = keine Größenbeschränkung)');
 define('LANG_CONFIG_CHECK', 'Konfiguration prüfen');
-define('LANG_CONFIG_MEMORY', 'Speicherlimit (Vorgabe php.ini Wert: %dMB. Grenzen: von %d bis %dMB. <a href="http://www.labsmedia.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">Vorsicht mit zu hohen Werten</a>)');
+define('LANG_CONFIG_MEMORY', 'Speicherlimit (Vorgabe php.ini Wert: %dMB. Grenzen: von %d bis %dMB. <a href="http://www.Dugwood.com/clickheat/performance.html" onclick="window.open(this.href, \'external\');return false">Vorsicht mit zu hohen Werten</a>)');
 define('LANG_CONFIG_MEMORY_KO', 'Bitte bleiben Sie im festgelegten Bereich.');
 define('LANG_CONFIG_STEP', 'Klicks in Bereich von X*X Pixel zusammenfassen (beschleunigt das Anzeigen der Wärmekarte)');
 define('LANG_CONFIG_STEP_KO', 'Bereich kann nicht kleiner als 1x1 Pixel sein.');
