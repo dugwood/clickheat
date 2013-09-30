@@ -1,0 +1,142 @@
+#content {
+	margin:0
+}
+#main {
+	margin:0;
+}
+h1 {
+	font-size:1.1em;
+	text-align:center;
+	margin:5px;
+	color:#55d;
+}
+th {
+	text-align:left;
+	vertical-align:top;
+}
+input {
+	border:1px solid #55b;
+	font-size:12px;
+}
+select {
+	border:1px solid #55b;
+	font-size:12px;
+}
+form {
+	margin:0px;
+}
+img {
+	border:0;
+	padding:0;
+	margin:0;
+}
+.float-right {
+	padding:10px;
+	float:right;
+	text-align:right;
+}
+#alphaSelector {
+	position:relative;
+	bottom:1px;
+}
+#formHeatmap {
+	margin:1px;
+}
+#pngDiv {
+	position:absolute;
+	text-align:center;
+	width:100%;
+	line-height:0em;
+	margin:0;
+	padding:0;
+}
+#overflowDiv {
+	position:absolute;
+	margin:2px auto 0;
+	width:100%;
+	overflow-y:auto;
+}
+#overflowDiv p {
+	text-align:center;
+	padding:0;
+	margin:0;
+}
+#webPageFrame {
+	z-index:1;
+}
+#cleaner {
+	color:#fff;
+	background-color:#55b;
+}
+#layoutDiv {
+	font-size:0.8em;
+	text-align:left;
+	padding:2px;
+	margin:0 5px;
+	border:1px dashed #446;
+	background-color:#ddf;
+	display:none;
+}
+.clickheat-calendar-on {
+	background-color:#bbf;
+}
+span.layout-left-fixed, span.layout-left-liquid, span.layout-left-empty {
+	border:1px solid #888;
+	padding:1px;
+	line-height:1.5em;
+}
+div.layout-left-fixed, div.layout-left-liquid, div.layout-left-empty {
+	width:70px;
+	border:1px solid #888;
+}
+.layout-left-fixed, .layout-center-fixed, .layout-right-fixed {
+	background-color:#66a;
+}
+.layout-left-liquid, .layout-center-liquid, .layout-right-liquid {
+	background-color:#aaf;
+}
+.layout-left-empty, .layout-right-empty {
+	background-color:#fff;
+}
+.layout-center-fixed, .layout-center-liquid {
+	width:55px;
+	margin-left:15px;
+}
+.layout-right-fixed, .layout-right-liquid, .layout-right-empty {
+	width:15px;
+	height:70px;
+	margin-left:40px;
+}
+#clickheat-js {
+	border:1px solid #66a;
+	background-color:#fff;
+	padding:5px;
+	margin:5px;
+}
+#clickheat-logo {
+	position:absolute;
+	margin-left:520px;
+	margin-top:35px;
+	text-align:center;
+}
+#clickheat-logo a {
+	text-decoration:underline;
+}
+#divPanel {
+	margin:0;
+	padding-left:5px;
+	border-bottom:1px solid #66a;
+	background-color:#eef;
+	cursor:pointer;
+	font-size:0.8em;
+	color:#66a;
+	text-align:left;
+}
+.error {
+	border:1px solid #faa;
+	background-color:#fee;
+	color:#c00;
+}
+.error a {
+	color:#c00;
+}
