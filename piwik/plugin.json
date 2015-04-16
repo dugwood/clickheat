@@ -1,0 +1,26 @@
+{
+    "name": "ClickHeart",
+    "version": "1.14.1-b1",
+    "description": "ClickHeat is a visual heatmap of clicks on a HTML page, showing hot and cold click zones. It is an OpenSource software, released under GPL licence, and free of charge.",
+    "theme": false,
+    "require": {
+        "piwik": ">=2.12.1"
+    },
+    "license": "GPLv3 or later",
+    "authors": [
+        {
+            "name": "Dugwood",
+            "email": "",
+            "homepage": "http://www.dugwood.com/clickheat/index.html"
+        },
+        {
+            "name": "yamachan",
+            "email": "yamachan@piwikjapan.org",
+            "homepage": "http://www.piwikjapan.org/"
+        }
+    ],
+    "support": {
+        "email": "yamachan@piwikjapan.org",
+        "irc": "@PiwikJapan"
+    }
+}

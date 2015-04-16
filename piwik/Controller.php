@@ -5,14 +5,22 @@
  *
  * @link http://www.dugwood.com/clickheat/index.html
  * @license http://www.gnu.org/licenses/gpl-3.0.html Gpl v3 or later
- * @version $Id: ClickHeat.php 377 2008-03-14 22:36:46Z matt $
+ * @version $Id$
  *
- * @package Piwik_ClickHeat
+ * @package Piwik\Plugins\ClickHeat
  */
-class Piwik_ClickHeat_Controller extends Piwik_Controller
+
+namespace Piwik\Plugins\ClickHeat;
+
+use Piwik\Translate;
+use Piwik\Piwik;
+use Piwik\Common;
+use Piwik\View;
+
+class Controller extends \Piwik\Plugin\Controller
 {
 
-	function init()
+	public function init()
 	{
 		$__languages = array('bg', 'cz', 'de', 'en', 'es', 'fr', 'hu', 'id', 'it', 'ja', 'nl', 'pl', 'pt', 'ro', 'ru', 'sr', 'tr', 'uk', 'zh');
 
@@ -39,10 +47,10 @@ class Piwik_ClickHeat_Controller extends Piwik_Controller
 		define('CLICKHEAT_PATH', $dirName.'/plugins/ClickHeat/libs/');
 		define('CLICKHEAT_INDEX_PATH', 'index.php?module=ClickHeat&');
 		define('CLICKHEAT_ROOT', PIWIK_INCLUDE_PATH.'/plugins/ClickHeat/libs/');
-		define('CLICKHEAT_CONFIG', PIWIK_INCLUDE_PATH.'/config/clickheat.php');
+		define('CLICKHEAT_CONFIG', PIWIK_INCLUDE_PATH.'/plugins/ClickHeat/clickheat.php');	
 		define('IS_PIWIK_MODULE', true);
 
-		if (Zend_Registry::get('access')->isSuperUser())
+		if (Piwik::hasUserSuperUserAccess())
 		{
 			define('CLICKHEAT_ADMIN', true);
 		}
@@ -51,8 +59,8 @@ class Piwik_ClickHeat_Controller extends Piwik_Controller
 			define('CLICKHEAT_ADMIN', false);
 		}
 
-		define('CLICKHEAT_LANGUAGE', Piwik_Translate::getInstance()->getLanguageToLoad());
-		include (CLICKHEAT_CONFIG);
+		define('CLICKHEAT_LANGUAGE', Translate::getLanguageToLoad());
+		require_once (CLICKHEAT_CONFIG);
 		/** Specific definitions */
 		$clickheatConf['__screenSizes'] = array(0 /** Must start with 0 */, 640, 800, 1024, 1280, 1440, 1600, 1800);
 		$clickheatConf['__browsersList'] = array('all' => '', 'firefox' => 'Firefox', 'msie' => 'Internet Explorer', 'safari' => 'Safari', 'opera' => 'Opera', 'kmeleon' => 'K-meleon', 'unknown' => '');
@@ -61,7 +69,7 @@ class Piwik_ClickHeat_Controller extends Piwik_Controller
 	}
 
 	/** It's a static class, but PHP 4 doesn't know about «static» */
-	function conf($conf = false)
+	private function conf($conf = false)
 	{
 		static $staticConf = array();
 		if ($conf === false)
@@ -77,7 +85,7 @@ class Piwik_ClickHeat_Controller extends Piwik_Controller
 	/**
 	 * Main method
 	 */
-	function view()
+	public function view()
 	{
 		/** List of available groups */
 		$groups = array();
@@ -85,7 +93,7 @@ class Piwik_ClickHeat_Controller extends Piwik_Controller
 		$d = dir($conf['logPath']);
 
 		/** Fix by Kowalikus: get the list of sites the current user has view access to */
-		$idSite = (int) Piwik_Common::getRequestVar('idSite');
+		$idSite = (int) Common::getRequestVar('idSite');
 		if (Piwik::isUserHasViewAccess($idSite) === false)
 		{
 			return false;
@@ -119,18 +127,18 @@ class Piwik_ClickHeat_Controller extends Piwik_Controller
 		$__selectScreens = '';
 		for ($i = 0; $i < count($conf['__screenSizes']); $i++)
 		{
-			$__selectScreens .= '<option value="'.$conf['__screenSizes'][$i].'">'.($conf['__screenSizes'][$i] === 0 ? LANG_ALL : $conf['__screenSizes'][$i].'px').'</option>';
+			$__selectScreens .= '<option value="'.$conf['__screenSizes'][$i].'">'.($conf['__screenSizes'][$i] === 0 ? Piwik::Translate('ClickHeat_LANG_ALL') : $conf['__screenSizes'][$i].'px').'</option>';
 		}
 
 		/** Browsers */
 		$__selectBrowsers = '';
 		foreach ($conf['__browsersList'] as $label => $name)
 		{
-			$__selectBrowsers .= '<option value="'.$label.'">'.($label === 'all' ? LANG_ALL : ($label === 'unknown' ? LANG_UNKNOWN : $name)).'</option>';
+			$__selectBrowsers .= '<option value="'.$label.'">'.($label === 'all' ? Piwik::Translate('ClickHeat_LANG_ALL') : ($label === 'unknown' ? Piwik::Translate('ClickHeat_LANG_UNKNOWN') : $name)).'</option>';
 		}
 
 		/** Date */
-		$date = strtotime(Piwik_Common::getRequestVar('date'));
+		$date = strtotime(Common::getRequestVar('date'));
 		if ($date === false)
 		{
 			if ($conf['yesterday'] === true)
@@ -146,7 +154,7 @@ class Piwik_ClickHeat_Controller extends Piwik_Controller
 		$__month = (int) date('m', $date);
 		$__year = (int) date('Y', $date);
 
-		$range = Piwik_Common::getRequestVar('period');
+		$range = Common::getRequestVar('period');
 		$range = $range[0];
 
 		if (!in_array($range, array('d', 'm', 'w')))
@@ -168,37 +176,37 @@ class Piwik_ClickHeat_Controller extends Piwik_Controller
 		{
 			$__day = 1;
 		}
-
-		$view = new Piwik_View('ClickHeat/templates/view.tpl');
+		
+		$view = new View('@ClickHeat/view');
 
 		$view->assign('clickheat_host', 'http://'.$_SERVER['SERVER_NAME']);
 		$view->assign('clickheat_path', CLICKHEAT_PATH);
 		$view->assign('clickheat_index', CLICKHEAT_INDEX_PATH);
-		$view->assign('clickheat_group', LANG_GROUP);
+		//$view->assign('clickheat_group', LANG_GROUP);
 		$view->assign('clickheat_groups', $__selectGroups);
-		$view->assign('clickheat_browser', LANG_BROWSER);
+		//$view->assign('clickheat_browser', LANG_BROWSER);
 		$view->assign('clickheat_browsers', $__selectBrowsers);
-		$view->assign('clickheat_screen', LANG_SCREENSIZE);
+		//$view->assign('clickheat_screen', LANG_SCREENSIZE);
 		$view->assign('clickheat_screens', $__selectScreens);
-		$view->assign('clickheat_heatmap', LANG_HEATMAP);
-		$view->assign('clickheat_loading', str_replace('\'', '\\\'', LANG_ERROR_LOADING));
-		$view->assign('clickheat_cleaner', str_replace('\'', '\\\'', LANG_CLEANER_RUNNING));
-		$view->assign('clickheat_admincookie', str_replace('\'', '\\\'', LANG_JAVASCRIPT_ADMIN_COOKIE));
-		$view->assign('clickheat_alpha', $conf['alpha']);
-		$view->assign('clickheat_iframes', $conf['hideIframes'] === true ? 'true' : 'false');
-		$view->assign('clickheat_flashes', $conf['hideFlashes'] === true ? 'true' : 'false');
-		$view->assign('clickheat_force_heatmap', $conf['heatmap'] === true ? ' checked="checked"' : '');
-		$view->assign('clickheat_jsokay', '<a href="#" onclick="showJsCode(); return false;">'.str_replace('\'', '\\\'', LANG_ERROR_JAVASCRIPT).'</a>');
-		$view->assign('clickheat_day', $__day);
-		$view->assign('clickheat_month', $__month);
-		$view->assign('clickheat_year', $__year);
-		$view->assign('clickheat_range', $range);
-		$view->assign('clickheat_menu', '<a href="#" onclick="adminCookie(); return false;">'.LANG_LOG_MY_CLICKS.'</a><br /><a href="#" onclick="showJsCode(); return false;">Javascript</a>');
+		//$view->assign('clickheat_heatmap', LANG_HEATMAP);
+		$view->clickheat_loading = str_replace('\'', '\\\'', Piwik::Translate('ClickHeat_LANG_ERROR_LOADING'));
+		$view->clickheat_cleaner = str_replace('\'', '\\\'', Piwik::Translate('ClickHeat_LANG_CLEANER_RUNNING'));
+		$view->clickheat_admincookie = str_replace('\'', '\\\'', Piwik::Translate('ClickHeat_LANG_JAVASCRIPT_ADMIN_COOKIE'));
+		$view->clickheat_alpha = $conf['alpha'];
+		$view->clickheat_iframes = $conf['hideIframes'] === true ? 'true' : 'false';
+		$view->clickheat_flashes = $conf['hideFlashes'] === true ? 'true' : 'false';
+		$view->clickheat_force_heatmap = $conf['heatmap'] === true ? ' checked="checked"' : '';
+		$view->clickheat_jsokay = str_replace('\'', '\\\'', Piwik::Translate('ClickHeat_LANG_ERROR_JAVASCRIPT'));
+		$view->clickheat_day = $__day;
+		$view->clickheat_month = $__month;
+		$view->clickheat_year = $__year;
+		$view->clickheat_range = $range;
+		$view->clickheat_menu = '<a href="#" onclick="adminCookie(); return false;">'. Piwik::Translate('ClickHeat_LANG_LOG_MY_CLICKS') .'</a><br /><a href="#" onclick="showJsCode(); return false;">Javascript</a>';
 
 		echo $view->render();
 	}
 
-	function iframe()
+	public function iframe()
 	{
 		$group = isset($_GET['group']) ? str_replace('/', '', $_GET['group']) : '';
 		$conf = self::conf();
@@ -218,22 +226,25 @@ class Piwik_ClickHeat_Controller extends Piwik_Controller
 		}
 	}
 
-	function javascript()
+	public function javascript()
 	{
-		include (CLICKHEAT_ROOT.'javascript.php');
+		foreach(array('', '_GROUP', '_GROUP0', '_GROUP1', '_GROUP2', '_GROUP3', '_DEBUG', '_QUOTA', '_IMAGE', '_SHORT', '_PASTE') as $value) {
+			define("LANG_JAVASCRIPT$value", Piwik::Translate("ClickHeat_LANG_JAVASCRIPT$value"));
+		}
+		require_once (CLICKHEAT_ROOT.'javascript.php');
 	}
 
-	function layout()
+	public function layout()
 	{
 		include (CLICKHEAT_ROOT.'layout.php');
 	}
 
-	function generate()
+	public function generate()
 	{
 		include (CLICKHEAT_ROOT.'generate.php');
 	}
 
-	function png()
+	public function png()
 	{
 		$conf = self::conf();
 		$imagePath = $conf['cachePath'].(isset($_GET['file']) ? str_replace('/', '', $_GET['file']) : '**unknown**');
@@ -249,7 +260,7 @@ class Piwik_ClickHeat_Controller extends Piwik_Controller
 		}
 	}
 
-	function layoutupdate()
+	public function layoutupdate()
 	{
 		$group = isset($_GET['group']) ? str_replace('/', '', $_GET['group']) : '';
 		$url = isset($_GET['url']) ? $_GET['url'] : '';
@@ -288,7 +299,7 @@ class Piwik_ClickHeat_Controller extends Piwik_Controller
 		exit('OK');
 	}
 
-	function cleaner()
+	public function cleaner()
 	{
 		include (CLICKHEAT_ROOT.'cleaner.php');
 	}
