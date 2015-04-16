@@ -13,7 +13,7 @@ if (!defined('CLICKHEAT_LANGUAGE'))
 
 if (IS_PIWIK_MODULE === true)
 {
-	$clickheatConf = Piwik_ClickHeat_Controller::conf();
+	$clickheatConf = self::conf();
 }
 
 /* Main class */
