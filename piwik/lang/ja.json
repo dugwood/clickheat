@@ -1,5 +1,5 @@
 {
-	"ClickHeat": {
+    "ClickHeat": {
 	    "LANG_USER": "ユーザ名",
 	    "LANG_PASSWORD" : "パスワード",
 	    "LANG_LOGIN" : "ログイン",
@@ -48,7 +48,7 @@
 	    "LANG_JAVASCRIPT_GROUP2" : "ページのタイトルを使用（<a href=\"http://www.labsmedia.com/clickheat/performance.html\" onclick=\"window.open(this.href, 'external',return false\">非推奨</a>）",
 	    "LANG_JAVASCRIPT_GROUP3" : "ウェブページのアドレスを使用：（<a href=\"http://www.labsmedia.com/clickheat/performance.html\" onclick=\"window.open(this.href, 'external',return false\">非推奨</a>）",
 	    "LANG_JAVASCRIPT_PASTE" : "以下のコードをページの最後にコピー＆ペーストしてください。（&lt;/body&gt;タグの前など）：",
-	    "LANG_JAVASCRIPT_DEBUG" : "コードの設置が完了したら debugclickheat パラメータをつけた状態でページを読み込むのを忘れないでください。（例えば設置したURLが http://www.site.com/index.html の場合、 http://www.site.com/index.html?debugclickheat を呼び出してください。Clickheat の動作確認のメッセージが見れるはずです。問題に遭遇したら気軽にお問い合わせください。",
+	    "LANG_JAVASCRIPT_DEBUG" : "コードの設置が完了したら<span class=\"error\">debugclickheat</span>パラメータをつけた状態でページを読み込むのを忘れないでください。（例えば設置したURLが http://www.site.com/index.html の場合、 http://www.site.com/index.html<span class=\"error\">?debugclickheat</span> を呼び出してください。Clickheatの動作確認のメッセージが見れるはずです。問題に遭遇したら気軽にお問い合わせください。",
 	    "LANG_NO_CLICK_BELOW" : "Leave below in English please",
 	    "LANG_NO_CLICK_BELOW" : "No clicks recorded beneath this line",
 	    "LANG_ERROR_GROUP" : "不明なグループ _JAVASCRIPT_",

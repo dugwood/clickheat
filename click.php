@@ -2,8 +2,9 @@
 /**
  * ClickHeat : Enregistrement d'un clic suivi / Logging of a tracked click
  *
- * @author Yvan Taviaud - Dugwood - www.dugwood.com
+ * @author Yvan Taviaud - Dugwood - www.dugwood.com, yamachan - yamachan@piwikjapan.org (rewrite for Piwik 2.12)
  * @since 27/10/2006
+ * @version $Id$
  */
 /* Remove all "//" to enable debugging. Don't forget to disable this when you're done! */
 //  error_reporting(E_ALL);

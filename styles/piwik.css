@@ -135,6 +135,7 @@ div.layout-left-fixed, div.layout-left-liquid, div.layout-left-empty {
 .error {
 	border:1px solid #faa;
 	background-color:#fee;
+	padding:1px;
 	color:#c00;
 }
 .error a {

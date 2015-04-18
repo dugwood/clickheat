@@ -2,8 +2,9 @@
 /**
  * ClickHeat : réponse à l'appel Ajax / Reply to the Ajax call
  *
- * @author Yvan Taviaud - Dugwood - www.dugwood.com
+ * @author Yvan Taviaud - Dugwood - www.dugwood.com, yamachan - yamachan@piwikjapan.org (rewrite for Piwik 2.12)
  * @since 27/10/2006
+ * @version $Id$
  */
 /* Direct call forbidden */
 if (!defined('CLICKHEAT_LANGUAGE'))
