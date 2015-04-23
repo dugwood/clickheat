@@ -1,0 +1,8 @@
+Install it via Piwik Marketplace.
+
+This plugin installer will make directories:
+
+    yourpiwik/tmp/cache/clickheat/cache
+    yourpiwik/tmp/cache/clickheat/logs.
+
+This plugin uses a different tracker. Please click on the link "JavaScript" and put the special Javascript codes into your website.
