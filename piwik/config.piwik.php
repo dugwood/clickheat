@@ -19,5 +19,5 @@
   'hideFlashes' => true,
   'yesterday' => false,
   'alpha' => 80,
-  'version' => '1.9-revC',
+  'version' => '0.1.0',
 ); ?>

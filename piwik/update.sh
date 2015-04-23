@@ -4,7 +4,7 @@
 PIWIKDIR=/var/www/piwik/scratch/plugins/ClickHeat
 LMBASEDIR=/export/piwik/clickheat/piwik-clickheat
 LMDIR=$LMBASEDIR
-FILES="*.html *.php js/ classes/ examples/ styles/ images/ languages/ scripts/ INSTALL LISEZMOI VERSION LICENSE README"
+FILES="*.html *.php js/ classes/ examples/ styles/ images/ languages/ scripts/"
 
 cd $LMDIR
 if [ "$PWD" != "$LMDIR" ]; then
@@ -19,9 +19,17 @@ do
 	cp -R "$FILE" "$PIWIKDIR/libs/";
 done;
 
-#LMDIR=/data/projects/clickheat/piwik
+FILES="LISEZMOI VERSION LICENSE README"
+
+for FILE in $FILES;
+do
+	echo "Remplacement de $FILE";
+	rm -rf "$PIWIKDIR/libs/$FILE"; # on le supprime car il peut être un lien symbolique pour développer plus rapidement
+	cp -R "$FILE" "$PIWIKDIR/libs/";
+done;
+
 LMDIR="$LMBASEDIR/piwik"
-FILES="*.php templates lang .htaccess plugin.json Menu.php config.piwik.php"
+FILES="*.php templates lang .htaccess plugin.json Menu.php config.piwik.php README.md screenshots INSTALL"
 
 cd $LMDIR
 if [ "$PWD" != "$LMDIR" ]; then
