@@ -1,8 +1,6 @@
 #!/bin/sh
-#PIWIKDIR=/data/projects/piwik/plugins/ClickHeat
-#LMBASEDIR=/data/projects/clickheat
-PIWIKDIR=/var/www/piwik/scratch/plugins/ClickHeat
-LMBASEDIR=/export/piwik/clickheat/piwik-clickheat
+PIWIKDIR=/data/projects/piwik/plugins/ClickHeat
+LMBASEDIR=/data/projects/clickheat
 LMDIR=$LMBASEDIR
 FILES="*.html *.php js/ classes/ examples/ styles/ images/ languages/ scripts/"
 
