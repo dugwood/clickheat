@@ -19,11 +19,11 @@ $f = @fsockopen('raw.github.com', 443, $errno, $errstr, 5);
 include CLICKHEAT_ROOT.'version.php';
 if ($f === false || is_null($f))
 {
-	echo sprintf(LANG_LATEST_KO, CLICKHEAT_VERSION), ': <iframe src="https://raw.github.com/dugwood/clickheat/master/version.txt" frameborder="0" width="50" height="20" scrolling="no"></iframe> - <a href="http://www.dugwood.com/clickheat/index.html">ClickHeat</a>';
+	echo sprintf(LANG_LATEST_KO, CLICKHEAT_VERSION), ': <iframe src="https://raw.githubusercontent.com/dugwood/clickheat/master/version.txt" frameborder="0" width="50" height="20" scrolling="no"></iframe> - <a href="http://www.dugwood.com/clickheat/index.html">ClickHeat</a>';
 }
 else
 {
-	fputs($f, "GET /dugwood/clickheat/master/VERSION HTTP/1.1\r\nHost: raw.github.com\r\n");
+	fputs($f, "GET /dugwood/clickheat/master/version.txt HTTP/1.1\r\nHost: raw.githubusercontent.com\r\n");
 	fputs($f, "Connection: close\r\n\r\n");
 	while (!feof($f) && trim(fgets($f)) !== '')
 	{
@@ -37,6 +37,6 @@ else
 	}
 	else
 	{
-		echo sprintf(LANG_LATEST_NO, CLICKHEAT_VERSION, $latest), ' <a href="http://www.dugwood.com/clickheat/index.html">ClickHeat</a>';
+		echo sprintf(LANG_LATEST_NO, CLICKHEAT_VERSION, $latest), ' <a href="https://www.dugwood.com/clickheat/index.html">ClickHeat</a>';
 	}
 }
