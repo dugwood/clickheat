@@ -219,7 +219,7 @@ $__year = (int) date('Y', $date);
 		jsAdminCookie = '<?php echo str_replace('\'', '\\\'', LANG_JAVASCRIPT_ADMIN_COOKIE) ?>';
 		hideIframes = <?php echo $clickheatConf['hideIframes'] === true ? 'true' : 'false' ?>;
 		hideFlashes = <?php echo $clickheatConf['hideFlashes'] === true ? 'true' : 'false' ?>;
-		scriptPath = 'http<?php echo!empty($_SERVER['HTTPS']) ? 's' : '' ?>://<?php echo $_SERVER['SERVER_NAME'].CLICKHEAT_PATH ?>';
+		scriptPath = '<?php echo (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' || isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') ? 'https' : 'http' ?>://<?php echo $_SERVER['SERVER_NAME'].CLICKHEAT_PATH ?>';
 		scriptIndexPath = '<?php echo CLICKHEAT_INDEX_PATH ?>';
 		lastDayOfMonth = <?php echo $__lastDayOfMonth ?>;
 		currentDate = [<?php echo $__day, ',', $__month, ',', $__year, ',', $__day, ',', $__month, ',', $__year ?>];
