@@ -52,7 +52,7 @@ This plugin uses minimal text to record data and file based logging. And when cl
 
 Therefore, we expect the plugin light works, but we don't know what load it has under Piwik 2.x. So we are very glad, when you inform us about your situation. 
 
-Please see the link [Performance and optimization](http://www.labsmedia.com/clickheat/156894.html) about system resources. If you want performance, you need to avoid to use a cgi, that is possible. It method is explained on the link. 
+Please see the link [Performance and optimization](https://www.dugwood.com/clickheat/156894-performance-and-optimization.html) about system resources. If you want performance, you need to avoid to use a cgi, that is possible. It method is explained on the link. 
 
 __New click data were added, but not updated heatmap. Why ?__
 
