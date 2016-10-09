@@ -1,10 +1,11 @@
 <?php
+
 /**
  * ClickHeat : Enregistrement d'un clic suivi / Logging of a tracked click
  *
  * @author Yvan Taviaud - Dugwood - www.dugwood.com, yamachan - yamachan@piwikjapan.org (rewrite for Piwik 2.12)
  * @since 27/10/2006
- * @version $Id$
+ * @version $Id: 739d5ed1d12efd02cb23b701fd724a84dac7527e $
  */
 /* Remove all "//" to enable debugging. Don't forget to disable this when you're done! */
 //  error_reporting(E_ALL);
@@ -22,11 +23,11 @@ if (strpos(str_replace('\\', '/', getcwd()), 'plugins/ClickHeat/libs') !== false
 	define('PIWIK_INCLUDE_PATH', PIWIK_DOCUMENT_ROOT);
 	define('CLICKHEAT_ROOT', PIWIK_DOCUMENT_ROOT.'/plugins/ClickHeat');
 	define('IS_PIWIK_MODULE', true);
-	define('CLICKHEAT_CONFIG', CLICKHEAT_ROOT .'/clickheat.php');
-	require_once PIWIK_INCLUDE_PATH . '/core/bootstrap.php';
+	define('CLICKHEAT_CONFIG', CLICKHEAT_ROOT.'/clickheat.php');
+	require_once PIWIK_INCLUDE_PATH.'/core/bootstrap.php';
 	@ignore_user_abort(true);
-	require_once PIWIK_INCLUDE_PATH . '/core/Common.php';
-	require_once PIWIK_INCLUDE_PATH . '/core/IP.php';
+	require_once PIWIK_INCLUDE_PATH.'/core/Common.php';
+	require_once PIWIK_INCLUDE_PATH.'/core/IP.php';
 }
 else
 {
@@ -72,7 +73,9 @@ function cleanStrings($str)
 	$str = strtr($str, array('à' => 'a', 'á' => 'a', 'â' => 'a', 'ã' => 'a', 'ä' => 'a', 'å' => 'a', 'æ' => 'a', 'ā' => 'a', 'ă' => 'a', 'ą' => 'a', 'ç' => 'c', 'ć' => 'c', 'ĉ' => 'c', 'ċ' => 'c', 'č' => 'c', 'ď' => 'd', 'đ' => 'd', 'è' => 'e', 'é' => 'e', 'ê' => 'e', 'ë' => 'e', 'ē' => 'e', 'ĕ' => 'e', 'ė' => 'e', 'ę' => 'e', 'ě' => 'e', 'ğ' => 'g', 'ġ' => 'g', 'ģ' => 'g', 'ĥ' => 'h', 'ħ' => 'h', 'ì' => 'i', 'í' => 'i', 'î' => 'i', 'ï' => 'i', 'ĩ' => 'i', 'ī' => 'i', 'ĭ' => 'i', 'į' => 'i', 'ı' => 'i', 'ĳ' => 'i', 'ĵ' => 'j', 'ķ' => 'k', 'ĸ' => 'k', 'ĺ' => 'l', 'ļ' => 'l', 'ľ' => 'l', 'ŀ' => 'l', 'ł' => 'l', 'ñ' => 'n', 'ń' => 'n', 'ņ' => 'n', 'ň' => 'n', 'ŉ' => 'n', 'ŋ' => 'n', 'ð' => 'o', 'ò' => 'o', 'ó' => 'o', 'ô' => 'o', 'õ' => 'o', 'ö' => 'o', 'ō' => 'o', 'ŏ' => 'o', 'ő' => 'o', 'œ' => 'o', 'ø' => 'o', 'ŕ' => 'r', 'ř' => 'r', 'ś' => 's', 'ŝ' => 's', 'ş' => 's', 'š' => 's', 'ſ' => 's', 'ţ' => 't', 'ť' => 't', 'ŧ' => 't', 'ù' => 'u', 'ú' => 'u', 'û' => 'u', 'ü' => 'u', 'ũ' => 'u', 'ū' => 'u', 'ŭ' => 'u', 'ů' => 'u', 'ű' => 'u', 'ų' => 'u', 'ŵ' => 'w', 'ý' => 'y', 'ÿ' => 'y', 'ŷ' => 'y', 'ź' => 'z', 'ż' => 'z', 'ž' => 'z'));
 	return substr(preg_replace('/[^a-z_0-9\-]+/', '.', $str), 0, 250);
 }
+
 /* isIpInRange have been removed on Piwik 2.12.0. */
+
 function isIpInRange($ip, $ipRanges)
 {
 	$ip = \Piwik\Network\IP::fromBinaryIP($ip);
