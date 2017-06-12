@@ -320,12 +320,11 @@ if ($check === true)
 <?php
 if ($check === true)
 {
-	if (is_dir(dirname($clickheatConf['logPath'])) === false)
-	{
-		mkdir(dirname($clickheatConf['logPath']));
+	/** create default log folder if it doesn't exist (makes default installation easier) **/
+	if ($clickheatConf['logPath'] == $clickheatDefault['logPath'] && is_dir($clickheatConf['logPath']) === false) {
+		mkdir($clickheatConf['logPath'],'755');
 	}
-	if (is_dir(dirname($clickheatConf['logPath'])) === false)
-	{
+	if (is_dir($clickheatConf['logPath']) === false) {
 		$checks = false;
 		echo '</td><td><img src="'.CLICKHEAT_PATH.'images/ko.png" width="16" height="16" alt="KO" /></td><td>', LANG_CONFIG_LOGPATH_DIR;
 	}
@@ -351,11 +350,11 @@ if ($check === true)
 					<?php
 					if ($check === true)
 					{
-						if (is_dir(dirname($clickheatConf['cachePath'])) === false)
-						{
-							mkdir(dirname($clickheatConf['cachePath']));
+						/** create default cache folder if it doesn't exist (makes default installation easier) **/
+						if ($clickheatConf['cachePath'] == $clickheatDefault['cachePath'] && is_dir($clickheatConf['cachePath']) === false) {
+							mkdir($clickheatConf['cachePath'],'755');
 						}
-						if (is_dir(dirname($clickheatConf['cachePath'])) === false)
+						if (is_dir($clickheatConf['cachePath']) === false)
 						{
 							$checks = false;
 							echo '</td><td><img src="'.CLICKHEAT_PATH.'images/ko.png" width="16" height="16" alt="KO" /></td><td>', LANG_CONFIG_CACHEPATH_DIR;

@@ -5,7 +5,7 @@
  *
  * @link http://www.dugwood.com/clickheat/index.html
  * @license http://www.gnu.org/licenses/gpl-3.0.html Gpl v3 or later
- * @version $Id: f5e483b84b362676b2345e2b440075bd64c48e07 $
+ * @version $Id$
  *
  * @package Piwik\Plugins\ClickHeat
  */
