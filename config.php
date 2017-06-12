@@ -320,9 +320,9 @@ if ($check === true)
 <?php
 if ($check === true)
 {
-	/** create default log folder if it doesn't exist (makes default installation easier) **/
+	/* Create default log folder if it doesn't exist (makes default installation easier) */
 	if ($clickheatConf['logPath'] == $clickheatDefault['logPath'] && is_dir($clickheatConf['logPath']) === false) {
-		mkdir($clickheatConf['logPath'],'755');
+		mkdir($clickheatConf['logPath'], 0755);
 	}
 	if (is_dir($clickheatConf['logPath']) === false) {
 		$checks = false;
@@ -330,7 +330,7 @@ if ($check === true)
 	}
 	else
 	{
-		/** Check if creation of a file is allowed */
+		/* Check if creation of a file is allowed */
 		$f = fopen($clickheatConf['logPath'].'test.txt', 'w');
 		if (!is_resource($f))
 		{
@@ -350,9 +350,9 @@ if ($check === true)
 					<?php
 					if ($check === true)
 					{
-						/** create default cache folder if it doesn't exist (makes default installation easier) **/
+						/* Create default cache folder if it doesn't exist (makes default installation easier) */
 						if ($clickheatConf['cachePath'] == $clickheatDefault['cachePath'] && is_dir($clickheatConf['cachePath']) === false) {
-							mkdir($clickheatConf['cachePath'],'755');
+							mkdir($clickheatConf['cachePath'], 0755);
 						}
 						if (is_dir($clickheatConf['cachePath']) === false)
 						{
@@ -361,7 +361,7 @@ if ($check === true)
 						}
 						else
 						{
-							/** Check if creation of a file is allowed */
+							/* Check if creation of a file is allowed */
 							$f = fopen($clickheatConf['cachePath'].'test.txt', 'w');
 							if (!is_resource($f))
 							{
@@ -537,7 +537,7 @@ if ($check === true)
 <?php
 if ($check === true && $checks === true)
 {
-	/* Test if config path is writable for config.php : */
+	/* Test if config path is writable for config.php: */
 	$f = fopen(dirname(CLICKHEAT_CONFIG).'/temp.tmp', 'w');
 	if (!is_resource($f))
 	{
