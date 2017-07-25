@@ -351,18 +351,19 @@ else
 					<?php
 					if ($check === true)
 					{
-						if (is_dir(dirname($clickheatConf['cachePath'])) === false)
+						/* Create default cache folder if it doesn't exist (makes default installation easier) */
+						if ($clickheatConf['cachePath'] == $clickheatDefault['cachePath'] && is_dir($clickheatConf['cachePath']) === false)
 						{
-							mkdir(dirname($clickheatConf['cachePath']));
+							mkdir($clickheatConf['cachePath'], 0755);
 						}
-						if (is_dir(dirname($clickheatConf['cachePath'])) === false)
+						if (is_dir($clickheatConf['cachePath']) === false)
 						{
 							$checks = false;
 							echo '</td><td><img src="'.CLICKHEAT_PATH.'images/ko.png" alt="KO"/></td><td>', LANG_CONFIG_CACHEPATH_DIR;
 						}
 						else
 						{
-							/** Check if creation of a file is allowed */
+							/* Check if creation of a file is allowed */
 							$f = fopen($clickheatConf['cachePath'].'test.txt', 'w');
 							if (!is_resource($f))
 							{

@@ -5,7 +5,7 @@
  * @author Yvan Taviaud - Dugwood - www.dugwood.com
  * @since 04/12/2006
  */
-/** Direct call forbidden */
+/* Direct call forbidden */
 if (!defined('CLICKHEAT_LANGUAGE'))
 {
 	exit;
@@ -29,7 +29,12 @@ $checks = true;
 	<table cellpadding="0" cellspacing="5" border="0">
 		<tr><td><?php echo LANG_CHECK_WRITABLE ?><br />(<?php echo dirname(CLICKHEAT_CONFIG) ?>/)</td><td>
 				<?php
-				/** Test if current path is writable for config.php : */
+				/* If 'config' folder doesn't exist, create it: **/
+				if (!is_dir(dirname(CLICKHEAT_CONFIG)))
+				{	
+					mkdir(dirname(CLICKHEAT_CONFIG), 0755);
+				}
+				/* Test if current path is writable for config.php : **/
 				$f = fopen(dirname(CLICKHEAT_CONFIG).'/temp.tmp', 'w');
 				if (!is_resource($f))
 				{
