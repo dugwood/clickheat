@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ClickHeat : réponse à l'appel Ajax / Reply to the Ajax call
  *
@@ -152,7 +153,7 @@ if ($result === false)
 $html = '';
 for ($i = 0; $i < $result['count']; $i++)
 {
-	$html .= '<img src="'.CLICKHEAT_INDEX_PATH.'action=png&amp;file='.$result['filenames'][$i].'&amp;rand='.$time.'" width="'.$result['width'].'" height="'.$result['height'].'" alt="" id="heatmap-'.$i.'" /><br />';
+	$html .= '<img src="'.CLICKHEAT_INDEX_PATH.'action=png&amp;file='.$result['filenames'][$i].'&amp;rand='.$time.'" width="'.$result['width'].'" height="'.$result['height'].'" alt="" id="heatmap-'.$i.'"/><br />';
 }
 echo $html;
 

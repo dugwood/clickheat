@@ -102,7 +102,7 @@ function getXmlHttp()
 			xmlhttp = null;
 		}
 	}
-	if (!xmlhttp && typeof(XMLHttpRequest) !== 'undefined')
+	if (!xmlhttp && typeof (XMLHttpRequest) !== 'undefined')
 	{
 		xmlhttp = new XMLHttpRequest();
 	}
@@ -124,7 +124,7 @@ function updateHeatmap()
 		screen = document.getElementById('formScreen').value;
 	}
 	xmlhttp.open('GET', scriptIndexPath + 'action=generate&group=' + document.getElementById('formGroup').value + '&screen=' + screen + '&browser=' + document.getElementById('formBrowser').value + '&date=' + currentDate[2] + '-' + currentDate[1] + '-' + currentDate[0] + '&range=' + currentRange + '&heatmap=' + (document.getElementById('formHeatmap').checked ? '1' : '0') + '&rand=' + Date(), true);
-	xmlhttp.onreadystatechange = function()
+	xmlhttp.onreadystatechange = function ()
 	{
 		if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
 		{
@@ -225,7 +225,7 @@ function showGroupLayout()
 	var xmlhttp;
 	xmlhttp = getXmlHttp();
 	xmlhttp.open('GET', scriptIndexPath + 'action=layout&group=' + document.getElementById('formGroup').value + '&rand=' + Date(), true);
-	xmlhttp.onreadystatechange = function()
+	xmlhttp.onreadystatechange = function ()
 	{
 		if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
 		{
@@ -315,7 +315,7 @@ function showJsCode()
 	var xmlhttp;
 	xmlhttp = getXmlHttp();
 	xmlhttp.open('GET', scriptIndexPath + 'action=javascript&rand=' + Date(), true);
-	xmlhttp.onreadystatechange = function()
+	xmlhttp.onreadystatechange = function ()
 	{
 		if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
 		{
@@ -333,7 +333,7 @@ function loadIframe()
 	var xmlhttp;
 	xmlhttp = getXmlHttp();
 	xmlhttp.open('GET', scriptIndexPath + 'action=iframe&group=' + document.getElementById('formGroup').value + '&rand=' + Date(), true);
-	xmlhttp.onreadystatechange = function()
+	xmlhttp.onreadystatechange = function ()
 	{
 		if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
 		{
@@ -370,7 +370,7 @@ function saveGroupLayout()
 	}
 	xmlhttp = getXmlHttp();
 	xmlhttp.open('GET', scriptIndexPath + 'action=layoutupdate&group=' + document.getElementById('formGroup').value + '&url=' + encodeURIComponent(document.getElementById('formUrl').value) + '&left=' + document.getElementById('layout-left-' + i).value + '&right=' + document.getElementById('layout-right-' + i).value + '&center=' + document.getElementById('layout-center-' + i).value + '&rand=' + Date(), true);
-	xmlhttp.onreadystatechange = function()
+	xmlhttp.onreadystatechange = function ()
 	{
 		if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
 		{
@@ -486,7 +486,7 @@ function runCleaner()
 	var xmlhttp;
 	xmlhttp = getXmlHttp();
 	xmlhttp.open('GET', scriptIndexPath + 'action=cleaner&rand=' + Date(), true);
-	xmlhttp.onreadystatechange = function()
+	xmlhttp.onreadystatechange = function ()
 	{
 		if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
 		{
@@ -499,7 +499,7 @@ function runCleaner()
 				document.getElementById('cleaner').innerHTML = xmlhttp.responseText;
 				if (xmlhttp.responseText.indexOf('JSLint') === -1)
 				{
-					setTimeout(function()
+					setTimeout(function ()
 					{
 						document.getElementById('cleaner').innerHTML = '';
 					}, 3000);
@@ -522,7 +522,7 @@ function showLatestVersion()
 	var xmlhttp;
 	xmlhttp = getXmlHttp();
 	xmlhttp.open('GET', scriptIndexPath + 'action=latest&rand=' + Date(), true);
-	xmlhttp.onreadystatechange = function()
+	xmlhttp.onreadystatechange = function ()
 	{
 		if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
 		{
@@ -547,7 +547,7 @@ function showPanel()
 		document.getElementById('header').style.display = 'block';
 	}
 	document.getElementById(div).style.display = 'block';
-	document.getElementById('divPanel').innerHTML = '<img src="' + scriptPath + 'images/arrow-up.png" width="11" height="6" alt="" />';
+	document.getElementById('divPanel').innerHTML = '<img src="' + scriptPath + 'images/arrow-up.png" alt=""/>';
 	resizeDiv();
 }
 /* Hides main panel */
@@ -560,7 +560,7 @@ function hidePanel()
 		document.getElementById('header').style.display = 'none';
 	}
 	document.getElementById(div).style.display = 'none';
-	document.getElementById('divPanel').innerHTML = '<img src="' + scriptPath + 'images/arrow-down.png" width="11" height="6" alt="" />';
+	document.getElementById('divPanel').innerHTML = '<img src="' + scriptPath + 'images/arrow-down.png" alt=""/>';
 	resizeDiv();
 }
 

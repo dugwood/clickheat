@@ -1,24 +1,36 @@
-body {
-	font-family: arial, helvetica, sans-serif;
-	font-size:0.8em;
-	color:#333;
-	margin:0;
+* {
+	font-family:"Raleway","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size:16px;
 }
-h1 {
-	font-size:1.1em;
-	text-align:center;
-	margin:5px;
-	color:#55d;
+body {
+	color:#444;
+	background-color:#fff;
+	overflow-x:hidden;
+	line-height:1.5;
+}
+a {
+	color:#3498db;
+	cursor:pointer;
+	text-decoration:none;
+	-moz-transition:all .2s;
+	-o-transition:all .2s;
+	-webkit-transition:all .2s;
+	transition:all .2s;
+}
+a:hover,a:focus {
+	color:#3498db;
+	outline:none;
+	text-decoration:none;
+}
+h1,h2,h3,h4,h5,h6 {
+	margin-bottom:15px;
+	margin-top:0;
 }
 th {
 	text-align:left;
 	vertical-align:top;
 }
 input {
-	border:1px solid #55b;
-	font-size:12px;
-}
-select {
 	border:1px solid #55b;
 	font-size:12px;
 }
@@ -31,15 +43,19 @@ img {
 	margin:0;
 }
 #clickTable {
-	margin:1px 10px;
+	margin:20px 10px;
 }
 #clickTable td {
 	vertical-align:top;
 }
+#clickTable img {
+	width:32px;
+}
 .float-right {
-	padding:10px 10px 0 0;
-	float:right;
 	text-align:right;
+}
+.float-right .flags img {
+	max-width:24px;
 }
 #cleaner {
 	color:#fff;
@@ -51,6 +67,14 @@ img {
 }
 #formHeatmap {
 	margin:1px;
+}
+#formGroup {
+	padding: 5px;
+	background: none repeat scroll 0% 0% #FFF;
+	border-radius: 7px;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	cursor: pointer;
+	color: #266590;
 }
 #pngDiv {
 	position:absolute;
@@ -115,24 +139,34 @@ img {
 	color:#c00;
 }
 .clickheat-calendar {
-	border-left:1px solid #bbf;
-	border-top:1px solid #bbf;
+	border-left:1px solid #266590;
+	border-top:1px solid #266590;
 }
 .clickheat-calendar th, .clickheat-calendar td {
 	text-align:center;
-	border-right:1px solid #bbf;
-	border-bottom:1px solid #bbf;
-	padding:0 2px;
+	border-right:1px solid #266590;
+	border-bottom:1px solid #266590;
+	padding:0 30px;
 }
 .clickheat-calendar td {
 	color:#aaa;
 }
 .clickheat-calendar a {
 	text-decoration:none;
-	color:#009;
+	color:rgba(38, 101, 144, 1);
+}
+#clickTable .clickheat-calendar img {
+	width:24px;
+	vertical-align:middle;
+}
+#clickheat-calendar td {
+	font-weight: 400;
+	color: #757575;
+	vertical-align: bottom;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 .clickheat-calendar-on {
-	background-color:#bbf;
+	background-color:rgba(164, 202, 228, 1);
 }
 span.layout-left-fixed, span.layout-left-liquid, span.layout-left-empty {
 	border:1px solid #888;
@@ -171,7 +205,10 @@ div.layout-left-fixed, div.layout-left-liquid, div.layout-left-empty {
 	margin:0;
 	padding-left:5px;
 	border-bottom:1px solid #66a;
-	background-color:#eef;
+	background-color:rgba(164, 202, 228, 1);
 	cursor:pointer;
 	color:#66a;
+}
+#divPanel img {
+	width:25px;
 }

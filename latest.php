@@ -12,7 +12,7 @@ if (!defined('CLICKHEAT_LANGUAGE'))
 }
 ?>
 <span class="float-right"><a href="#" onclick="hideGroupLayout();
-		return false;"><img src="<?php echo CLICKHEAT_PATH ?>images/ko.png" width="16" height="16" alt="Close" /></a></span>
+		return false;"><img src="<?php echo CLICKHEAT_PATH ?>images/ko.png" alt="Close"/></a></span>
 <h1><?php echo LANG_LATEST_CHECK ?></h1>
 <?php
 $f = @fsockopen('raw.github.com', 443, $errno, $errstr, 5);

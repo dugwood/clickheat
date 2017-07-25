@@ -86,25 +86,29 @@ $__day = (int) date('d', $date);
 $__month = (int) date('m', $date);
 $__year = (int) date('Y', $date);
 ?>
-<div id="adminPanel"><span class="float-right">
-		<a href="http://www.dugwood.<?php echo CLICKHEAT_LANGUAGE === 'fr' ? 'fr' : 'com' ?>/clickheat/index.html"><img src="<?php echo CLICKHEAT_PATH ?>images/logo170.png" width="170" height="35" alt="ClickHeat" /></a><br />
+<div id="adminPanel">
+	<span class="float-right">
+		<a href="https://www.dugwood.<?php echo CLICKHEAT_LANGUAGE === 'fr' ? 'fr' : 'com' ?>/clickheat/index.html"><img src="<?php echo CLICKHEAT_PATH ?>images/logo170.png" alt="ClickHeat"/></a><br />
 		<a href="#" onclick="adminCookie();
-				return false;"><?php echo LANG_LOG_MY_CLICKS ?></a>
-		   <?php if (CLICKHEAT_ADMIN === true) echo '<a href="', CLICKHEAT_INDEX_PATH, 'action=config">', LANG_CONFIG, '</a> <a href="#" onclick="showJsCode(); return false;">Javascript</a> <a href="#" onclick="showLatestVersion(); return false;">', LANG_LATEST_CHECK, '</a> '; ?>
+				return false;"><?php echo LANG_LOG_MY_CLICKS ?></a> -
+		   <?php if (CLICKHEAT_ADMIN === true) echo '<a href="', CLICKHEAT_INDEX_PATH, 'action=config">', LANG_CONFIG, '</a> - <a href="#" onclick="showJsCode(); return false;">Javascript</a> - <a href="#" onclick="showLatestVersion(); return false;">', LANG_LATEST_CHECK, '</a> - '; ?>
 		<a href="<?php echo CLICKHEAT_INDEX_PATH ?>action=logout"><?php echo LANG_LOGOUT ?></a><br />
-		<?php
-		foreach ($__languages as $lang)
-		{
-			echo '<a href="', CLICKHEAT_INDEX_PATH, 'language=', $lang, '"><img src="', CLICKHEAT_PATH, 'images/flags/', $lang, '.png" width="18" height="12" alt="', $lang, '" /></a> ';
-		}
-		?><br />
-		<span id="cleaner">&nbsp;</span></span>
+		<span class="flags">
+			<?php
+			foreach ($__languages as $lang)
+			{
+				echo '<a href="', CLICKHEAT_INDEX_PATH, 'language=', $lang, '"><img src="', CLICKHEAT_PATH, 'images/flags/', $lang, '.png" alt="', $lang, '"/></a> ';
+			}
+			?><br />
+		</span>
+		<span id="cleaner">&nbsp;</span>
+	</span>
 	<form action="<?php echo CLICKHEAT_INDEX_PATH ?>" method="get" onsubmit="return false;" id="clickForm">
 		<table cellpadding="0" cellspacing="1" border="0" id="clickTable">
 			<tr>
 				<th><?php echo LANG_SITE ?> &amp; <?php echo LANG_GROUP ?></th><td><select name="group" id="formGroup" onchange="hideGroupLayout();
-				loadIframe();"><?php echo $__selectGroups ?></select><?php if (CLICKHEAT_ADMIN === true) echo ' <a href="#" onclick="showGroupLayout(); return false;"><img src="', CLICKHEAT_PATH, 'images/layout.png" width="16" height="16" alt="Layout" /></a>'; ?> <a href="#" onclick="updateHeatmap();
-				return false;"><img src="<?php echo CLICKHEAT_PATH ?>images/reload.png" width="16" height="16" alt="Refresh" /></a></td>
+						loadIframe();"><?php echo $__selectGroups ?></select><?php if (CLICKHEAT_ADMIN === true) echo ' <a href="#" onclick="showGroupLayout(); return false;"><img src="', CLICKHEAT_PATH, 'images/layout.png" alt="Layout"/></a>'; ?> <a href="#" onclick="updateHeatmap();
+								return false;"><img src="<?php echo CLICKHEAT_PATH ?>images/reload.png" alt="Refresh"/></a></td>
 				<td rowspan="4">
 					<?php
 					$__calendar = '<table cellpadding="0" cellspacing="0" border="0" class="clickheat-calendar"><tr>';
@@ -157,34 +161,34 @@ $__year = (int) date('Y', $date);
 					<table cellpadding="1" cellspacing="0" border="0" class="clickheat-calendar">
 						<tr>
 							<th><a href="#" onclick="url = window.location.href.replace(/&?date=\d+-\d+-\d+/, '');
-				if (url.search(/\?/) == -1)
-					url += '?';
-				url += '&amp;date=<?php echo ($__month == '1' ? $__year - 1 : $__year), '-', ($__month == '1' ? '12' : sprintf('%02d', $__month - 1)) ?>-01';
-				window.location.href = url;
-				return false;"><img src="<?php echo CLICKHEAT_PATH ?>images/previous.png" width="16" height="16" alt="Previous" /></a><?php echo $months[$__month] ?><a href="#" onclick="url = window.location.href.replace(/&?date=\d+-\d+-\d+/, '');
-				if (url.search(/\?/) == -1)
-					url += '?';
-				url += '&amp;date=<?php echo ($__month == '12' ? $__year + 1 : $__year), '-', ($__month == '12' ? '01' : sprintf('%02d', $__month + 1)) ?>-01';
-				window.location.href = url;
-				return false;"><img src="<?php echo CLICKHEAT_PATH ?>images/next.png" width="16" height="16" alt="Next" /></a></th>
+									if (url.search(/\?/) == -1)
+										url += '?';
+									url += '&amp;date=<?php echo ($__month == '1' ? $__year - 1 : $__year), '-', ($__month == '1' ? '12' : sprintf('%02d', $__month - 1)) ?>-01';
+									window.location.href = url;
+									return false;"><img src="<?php echo CLICKHEAT_PATH ?>images/previous.png" alt="Previous"/></a><?php echo $months[$__month] ?><a href="#" onclick="url = window.location.href.replace(/&?date=\d+-\d+-\d+/, '');
+											if (url.search(/\?/) == -1)
+												url += '?';
+											url += '&amp;date=<?php echo ($__month == '12' ? $__year + 1 : $__year), '-', ($__month == '12' ? '01' : sprintf('%02d', $__month + 1)) ?>-01';
+											window.location.href = url;
+											return false;"><img src="<?php echo CLICKHEAT_PATH ?>images/next.png" alt="Next"/></a></th>
 						</tr>
 						<tr>
 							<td id="clickheat-calendar-d"><a href="#" onclick="currentRange = 'd';
-				this.blur();
-				updateCalendar();
-				return false;"><?php echo $ranges[0] ?></a></td>
+									this.blur();
+									updateCalendar();
+									return false;"><?php echo $ranges[0] ?></a></td>
 						</tr>
 						<tr>
 							<td id="clickheat-calendar-w"><a href="#" onclick="currentRange = 'w';
-				this.blur();
-				updateCalendar();
-				return false;"><?php echo $ranges[1] ?></a></td>
+									this.blur();
+									updateCalendar();
+									return false;"><?php echo $ranges[1] ?></a></td>
 						</tr>
 						<tr>
 							<td id="clickheat-calendar-m"><a href="#" onclick="currentRange = 'm';
-				this.blur();
-				updateCalendar();
-				return false;"><?php echo $ranges[2] ?></a></td>
+									this.blur();
+									updateCalendar();
+									return false;"><?php echo $ranges[2] ?></a></td>
 						</tr>
 					</table>
 				</td>
@@ -197,12 +201,12 @@ $__year = (int) date('Y', $date);
 			</tr>
 			<tr>
 				<th><?php echo LANG_SCREENSIZE ?></th><td><select name="screen" id="formScreen" onchange="resizeDiv();
-				updateHeatmap();"><?php echo $__selectScreens ?></select></td>
+						updateHeatmap();"><?php echo $__selectScreens ?></select></td>
 			</tr>
 		</table>
 	</form>
 </div>
-<div id="divPanel" onmouseover="showPanel();" onclick="hidePanel();"><img src="<?php echo CLICKHEAT_PATH ?>images/arrow-up.png" width="11" height="6" alt="" /></div>
+<div id="divPanel" onmouseover="showPanel();" onclick="hidePanel();"><img src="<?php echo CLICKHEAT_PATH ?>images/arrow-up.png" alt=""/></div>
 <script type="text/javascript" src="<?php echo CLICKHEAT_PATH ?>js/admin.js"></script>
 <div id="overflowDiv">
 	<div id="layoutDiv"></div>
@@ -220,20 +224,20 @@ $__year = (int) date('Y', $date);
 		hideIframes = <?php echo $clickheatConf['hideIframes'] === true ? 'true' : 'false' ?>;
 		hideFlashes = <?php echo $clickheatConf['hideFlashes'] === true ? 'true' : 'false' ?>;
 		scriptPath = '<?php echo (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' || isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') ? 'https' : 'http' ?>://<?php echo $_SERVER['SERVER_NAME'].CLICKHEAT_PATH ?>';
-		scriptIndexPath = '<?php echo CLICKHEAT_INDEX_PATH ?>';
-		lastDayOfMonth = <?php echo $__lastDayOfMonth ?>;
-		currentDate = [<?php echo $__day, ',', $__month, ',', $__year, ',', $__day, ',', $__month, ',', $__year ?>];
-		currentAlpha = <?php echo $clickheatConf['alpha'] ?>;
+			scriptIndexPath = '<?php echo CLICKHEAT_INDEX_PATH ?>';
+			lastDayOfMonth = <?php echo $__lastDayOfMonth ?>;
+			currentDate = [<?php echo $__day, ',', $__month, ',', $__year, ',', $__day, ',', $__month, ',', $__year ?>];
+			currentAlpha = <?php echo $clickheatConf['alpha'] ?>;
 
-		/** Draw the alpha selector */
-		drawAlphaSelector('alphaSelector', 30);
+			/** Draw the alpha selector */
+			drawAlphaSelector('alphaSelector', 30);
 
-		/** Resize the main div */
-		resizeDiv();
+			/** Resize the main div */
+			resizeDiv();
 
-		/** Load iframe (which will load the heatmap once the info is okay) */
-		loadIframe();
+			/** Load iframe (which will load the heatmap once the info is okay) */
+			loadIframe();
 
-		/** Run cleaner */
-		runCleaner(); //-->
+			/** Run cleaner */
+			runCleaner(); //-->
 </script>
