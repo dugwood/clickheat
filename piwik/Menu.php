@@ -6,7 +6,7 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html Gpl v3 or later
  * @author YAMAMOTO Takashi - yamachan@piwikjapan.org
  * @since 2015/4/16
- * @version $Id: 0aea8d2d84ea9ccba54ca1d4c22f0b6a8063269d $
+ * @version $Id$
  *
  * @package Piwik\Plugins\ClickHeat
  */
