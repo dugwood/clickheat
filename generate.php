@@ -5,7 +5,7 @@
  *
  * @author Yvan Taviaud - Dugwood - www.dugwood.com, yamachan - yamachan@piwikjapan.org (rewrite for Piwik 2.12)
  * @since 27/10/2006
- * @version $Id: 0be9c20989f69a2cf7d2d35827b3a27191ccef4c $
+ * @version $Id$
  */
 /* Direct call forbidden */
 if (!defined('CLICKHEAT_LANGUAGE'))
