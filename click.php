@@ -5,14 +5,13 @@
  *
  * @author Yvan Taviaud - Dugwood - www.dugwood.com, yamachan - yamachan@piwikjapan.org (rewrite for Piwik 2.12)
  * @since 27/10/2006
- * @version $Id$
+ * @version $Id: 739d5ed1d12efd02cb23b701fd724a84dac7527e $
  */
 /* Remove all "//" to enable debugging. Don't forget to disable this when you're done! */
 //  error_reporting(E_ALL);
 //  restore_error_handler();
 //  ini_set('display_errors', 1);
 
-use Piwik\Common;
 use Piwik\IP;
 use Piwik\Network\IPUtils;
 
