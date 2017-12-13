@@ -9,7 +9,7 @@ Docker
 ======
 
 ```
-docker buil -t dugwood/clickheat .
+docker build -t dugwood/clickheat .
 docker run -it -p 80:80 dugwood/clickheat
 curl http://localhost
 ```
@@ -17,7 +17,7 @@ curl http://localhost
 Or build and run with a context path
 
 ```
-docker buil --build-arg CONTEXT_PATH=clickheat -t dugwood/clickheat .
+docker build --build-arg CONTEXT_PATH=clickheat -t dugwood/clickheat .
 docker run -it -p 80:80 dugwood/clickheat
 curl http://localhost/clickheat
 ```
