@@ -56,7 +56,7 @@ class Heatmap
 	/* @var integer $__grey Niveau du gris (couleur du 0 clic) / Grey level (color of no-click) */
 	var $__grey = 240;
 
-	function Heatmap()
+	function __construct()
 	{
 		$this->alpha = min($this->alpha, 127);
 	}
