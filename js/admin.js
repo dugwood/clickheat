@@ -5,21 +5,23 @@
  ** @since 01/04/2007
  **/
 
-var currentAlpha = 80,
-		lastDayOfMonth = 0,
-		weekDays = [],
-		currentDate = [0, 0, 0, 0, 0, 0],
-		currentRange = 'd',
-		currentWidth = 0,
-		pleaseWait = '',
-		cleanerRunning = '',
-		isJsOkay = '',
-		jsAdminCookie = '',
-		hideIframes = true,
-		hideFlashes = true,
-		isPiwikModule = false,
-		scriptPath = '',
-		scriptIndexPath = '';
+var chAdmin = {
+	currentAlpha: 80,
+	lastDayOfMonth: 0,
+	weekDays: [],
+	currentDate: [0, 0, 0, 0, 0, 0],
+	currentRange: 'd',
+	currentWidth: 0,
+	pleaseWait: '',
+	cleanerRunning: '',
+	isJsOkay: '',
+	jsAdminCookie: '',
+	hideIframes: true,
+	hideFlashes: true,
+	isPiwikModule: false,
+	scriptPath: '',
+	scriptIndexPath: ''
+};
 
 /* Show layout's parameters */
 function showRadioLayout()
@@ -33,11 +35,11 @@ function showRadioLayout()
 /* Change Alpha on heatmap */
 function changeAlpha(alpha)
 {
-	document.getElementById('alpha-level-' + currentAlpha).style.borderTop = '1px solid #888';
-	document.getElementById('alpha-level-' + currentAlpha).style.borderBottom = '1px solid #888';
-	currentAlpha = alpha;
-	document.getElementById('alpha-level-' + currentAlpha).style.borderTop = '2px solid #55b';
-	document.getElementById('alpha-level-' + currentAlpha).style.borderBottom = '2px solid #55b';
+	document.getElementById('alpha-level-' + chAdmin.currentAlpha).style.borderTop = '1px solid #888';
+	document.getElementById('alpha-level-' + chAdmin.currentAlpha).style.borderBottom = '1px solid #888';
+	chAdmin.currentAlpha = alpha;
+	document.getElementById('alpha-level-' + chAdmin.currentAlpha).style.borderTop = '2px solid #55b';
+	document.getElementById('alpha-level-' + chAdmin.currentAlpha).style.borderBottom = '2px solid #55b';
 	for (var i = 0; i < document.images.length; i += 1)
 	{
 		if (document.images[i].id.search(/^heatmap-\d+$/) === 0)
@@ -69,23 +71,24 @@ function resizeDiv()
 {
 	var oD = document.documentElement && document.documentElement.clientHeight !== 0 ? document.documentElement : document.body, iH = oD.innerHeight || oD.clientHeight, iW = oD.innerWidth || oD.clientWidth;
 	document.getElementById('overflowDiv').style.height = (iH < 300 ? 400 : iH) - getTop(document.getElementById('overflowDiv')) + 'px';
-	/** Width of main display */
+	/* Width of main display */
 	iW = iW < 300 ? 400 : iW;
 	if (document.getElementById('formScreen').value === '0')
 	{
-		currentWidth = iW;
+		chAdmin.currentWidth = iW;
 	}
 	else
 	{
-		currentWidth = document.getElementById('formScreen').value - 5;
+		chAdmin.currentWidth = document.getElementById('formScreen').value - 5;
 	}
-	document.getElementById('overflowDiv').style.width = currentWidth + 'px';
-	document.getElementById('webPageFrame').style.width = currentWidth - 25 + 'px';
+	document.getElementById('overflowDiv').style.width = chAdmin.currentWidth + 'px';
+	document.getElementById('webPageFrame').style.width = chAdmin.currentWidth - 25 + 'px';
 }
 
 /* Ajax object */
 function getXmlHttp()
 {
+	/* global ActiveXObject */
 	var xmlhttp = false;
 	try
 	{
@@ -113,24 +116,24 @@ function getXmlHttp()
 function updateHeatmap()
 {
 	var xmlhttp, screen = 0;
-	document.getElementById('pngDiv').innerHTML = '&nbsp;<div style="line-height:20px"><span class="error">' + pleaseWait + '</span></div>';
+	document.getElementById('pngDiv').innerHTML = '&nbsp;<div style="line-height:20px"><span class="error">' + chAdmin.pleaseWait + '</span></div>';
 	xmlhttp = getXmlHttp();
 	if (document.getElementById('formScreen').value === '0')
 	{
-		screen = -1 * currentWidth + 25;
+		screen = -1 * chAdmin.currentWidth + 25;
 	}
 	else
 	{
 		screen = document.getElementById('formScreen').value;
 	}
-	xmlhttp.open('GET', scriptIndexPath + 'action=generate&group=' + document.getElementById('formGroup').value + '&screen=' + screen + '&browser=' + document.getElementById('formBrowser').value + '&date=' + currentDate[2] + '-' + currentDate[1] + '-' + currentDate[0] + '&range=' + currentRange + '&heatmap=' + (document.getElementById('formHeatmap').checked ? '1' : '0') + '&rand=' + Date(), true);
+	xmlhttp.open('GET', chAdmin.scriptIndexPath + 'action=generate&group=' + document.getElementById('formGroup').value + '&screen=' + screen + '&browser=' + document.getElementById('formBrowser').value + '&date=' + chAdmin.currentDate[2] + '-' + chAdmin.currentDate[1] + '-' + chAdmin.currentDate[0] + '&range=' + chAdmin.currentRange + '&heatmap=' + (document.getElementById('formHeatmap').checked ? '1' : '0') + '&rand=' + Date(), true);
 	xmlhttp.onreadystatechange = function ()
 	{
 		if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
 		{
-			document.getElementById('pngDiv').innerHTML = xmlhttp.responseText.replace(/_JAVASCRIPT_/, isJsOkay);
+			document.getElementById('pngDiv').innerHTML = xmlhttp.responseText.replace(/_JAVASCRIPT_/, chAdmin.isJsOkay);
 			document.getElementById('webPageFrame').height = document.getElementById('pngDiv').offsetHeight;
-			changeAlpha(currentAlpha);
+			changeAlpha(chAdmin.currentAlpha);
 		}
 	};
 	xmlhttp.send(null);
@@ -140,47 +143,47 @@ function updateHeatmap()
 function updateCalendar(day)
 {
 	var min, max, week, d;
-	if (isPiwikModule === true)
+	if (chAdmin.isPiwikModule)
 	{
 		return;
 	}
-	/* currentDate[day, month, year, saved_day, month_origin, year_origin] */
+	/* chAdmin.currentDate[day, month, year, saved_day, month_origin, year_origin] */
 	if (day)
 	{
-		currentDate[3] = day;
+		chAdmin.currentDate[3] = day;
 	}
-	currentDate[1] = currentDate[4];
-	currentDate[2] = currentDate[5];
+	chAdmin.currentDate[1] = chAdmin.currentDate[4];
+	chAdmin.currentDate[2] = chAdmin.currentDate[5];
 	/* Showing one day */
-	if (currentRange === 'd')
+	if (chAdmin.currentRange === 'd')
 	{
 		/* Remember the last day used */
-		currentDate[0] = currentDate[3];
-		min = currentDate[0];
-		max = currentDate[0];
+		chAdmin.currentDate[0] = chAdmin.currentDate[3];
+		min = chAdmin.currentDate[0];
+		max = chAdmin.currentDate[0];
 	}
 	/* Showing one month */
-	if (currentRange === 'm')
+	if (chAdmin.currentRange === 'm')
 	{
-		currentDate[0] = 1;
+		chAdmin.currentDate[0] = 1;
 		min = 1;
-		max = weekDays.length;
+		max = chAdmin.weekDays.length;
 	}
 	/* Showing one week */
-	if (currentRange === 'w')
+	if (chAdmin.currentRange === 'w')
 	{
 		/* Remember the last day used */
-		currentDate[0] = currentDate[3];
-		week = weekDays[currentDate[0]];
+		chAdmin.currentDate[0] = chAdmin.currentDate[3];
+		week = chAdmin.weekDays[chAdmin.currentDate[0]];
 		min = 0;
 		max = 0;
-		for (d = 1; d < weekDays.length; d += 1)
+		for (d = 1; d < chAdmin.weekDays.length; d += 1)
 		{
-			if (weekDays[d] === week)
+			if (chAdmin.weekDays[d] === week)
 			{
 				if (min === 0)
 				{
-					currentDate[0] = d;
+					chAdmin.currentDate[0] = d;
 					min = d;
 				}
 				max = d;
@@ -189,16 +192,16 @@ function updateCalendar(day)
 		/* Start was on the previous month */
 		if (min === 1 && max !== 7)
 		{
-			currentDate[0] = lastDayOfMonth - 6 + max;
-			currentDate[1] -= 1;
-			if (currentDate[1] === 0)
+			chAdmin.currentDate[0] = chAdmin.lastDayOfMonth - 6 + max;
+			chAdmin.currentDate[1] -= 1;
+			if (chAdmin.currentDate[1] === 0)
 			{
-				currentDate[1] = 12;
-				currentDate[2] -= 1;
+				chAdmin.currentDate[1] = 12;
+				chAdmin.currentDate[2] -= 1;
 			}
 		}
 	}
-	for (d = 1; d < weekDays.length; d += 1)
+	for (d = 1; d < chAdmin.weekDays.length; d += 1)
 	{
 		document.getElementById('clickheat-calendar-' + d).className = (d >= min && d <= max ? 'clickheat-calendar-on' : '');
 	}
@@ -206,16 +209,16 @@ function updateCalendar(day)
 	{
 		if (document.getElementById('clickheat-calendar-10' + d))
 		{
-			document.getElementById('clickheat-calendar-10' + d).className = (currentRange === 'w' && weekDays[min] === weekDays[1] ? 'clickheat-calendar-on' : '');
+			document.getElementById('clickheat-calendar-10' + d).className = (chAdmin.currentRange === 'w' && chAdmin.weekDays[min] === chAdmin.weekDays[1] ? 'clickheat-calendar-on' : '');
 		}
 		if (document.getElementById('clickheat-calendar-11' + d))
 		{
-			document.getElementById('clickheat-calendar-11' + d).className = (currentRange === 'w' && weekDays[max] === weekDays[weekDays.length - 1] ? 'clickheat-calendar-on' : '');
+			document.getElementById('clickheat-calendar-11' + d).className = (chAdmin.currentRange === 'w' && chAdmin.weekDays[max] === chAdmin.weekDays[chAdmin.weekDays.length - 1] ? 'clickheat-calendar-on' : '');
 		}
 	}
-	document.getElementById('clickheat-calendar-d').className = (currentRange === 'd' ? 'clickheat-calendar-on' : '');
-	document.getElementById('clickheat-calendar-w').className = (currentRange === 'w' ? 'clickheat-calendar-on' : '');
-	document.getElementById('clickheat-calendar-m').className = (currentRange === 'm' ? 'clickheat-calendar-on' : '');
+	document.getElementById('clickheat-calendar-d').className = (chAdmin.currentRange === 'd' ? 'clickheat-calendar-on' : '');
+	document.getElementById('clickheat-calendar-w').className = (chAdmin.currentRange === 'w' ? 'clickheat-calendar-on' : '');
+	document.getElementById('clickheat-calendar-m').className = (chAdmin.currentRange === 'm' ? 'clickheat-calendar-on' : '');
 	updateHeatmap();
 }
 
@@ -224,7 +227,7 @@ function showGroupLayout()
 {
 	var xmlhttp;
 	xmlhttp = getXmlHttp();
-	xmlhttp.open('GET', scriptIndexPath + 'action=layout&group=' + document.getElementById('formGroup').value + '&rand=' + Date(), true);
+	xmlhttp.open('GET', chAdmin.scriptIndexPath + 'action=layout&group=' + document.getElementById('formGroup').value + '&rand=' + Date(), true);
 	xmlhttp.onreadystatechange = function ()
 	{
 		if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
@@ -253,7 +256,7 @@ function updateJs()
 			linkList = [],
 			rand;
 	str += '&lt;script type="text/javascript" src="';
-	str += scriptPath + 'js/clickheat.js"&gt;&lt;/script&gt;' + addReturn;
+	str += chAdmin.scriptPath + 'js/clickheat.js"&gt;&lt;/script&gt;' + addReturn;
 	if (language === 'fr')
 	{
 		linkList = ['&lt;a href="http://www.dugwood.fr/clickheat/index.html"&gt;ClickHeat&lt;/a&gt;', '&lt;a href="http://www.dugwood.fr/index.html"&gt;Module Heatmap&lt;/a&gt;', '&lt;a href="http://www.dugwood.fr/index.html"&gt;CMS&lt;/a&gt;', '&lt;a href="http://www.dugwood.fr/index.html"&gt;Outils Open Source&lt;/a&gt;'];
@@ -264,18 +267,18 @@ function updateJs()
 	}
 	if (document.getElementById('jsShowImage').checked)
 	{
-		str += '&lt;a href="http://www.dugwood.' + language + '/clickheat/index.html" title="ClickHeat: clicks heatmap"&gt;&lt;img src="' + scriptPath + 'images/logo.png" width="80" height="15" border="0" alt="ClickHeat : track clicks" /&gt;&lt;/a&gt;' + addReturn;
+		str += '&lt;a href="http://www.dugwood.' + language + '/clickheat/index.html" title="ClickHeat: clicks heatmap"&gt;&lt;img src="' + chAdmin.scriptPath + 'images/logo.png" width="80" height="15" border="0" alt="ClickHeat : track clicks" /&gt;&lt;/a&gt;' + addReturn;
 	}
 	else
 	{
 		rand = Math.floor(Math.random() * linkList.length);
 		str += '&lt;noscript&gt;&lt;p&gt;' + linkList[rand] + '&lt;/p&gt;&lt;/noscript&gt;' + addReturn;
 	}
-	str += '&lt;script type="text/javascript"&gt;&lt;!--<br />';
+	str += '&lt;script&gt;<br/>';
 	str += 'clickHeatSite = ';
 	/*jslint regexp: false*/
 	/* Piwik form */
-	if (isPiwikModule === true)
+	if (chAdmin.isPiwikModule)
 	{
 		/*global piwik: false */
 		str += piwik.idSite;
@@ -303,8 +306,8 @@ function updateJs()
 		str += 'clickHeatQuota = <span class="error">' + document.getElementById('jsQuota').value.replace(/[^0-9]*/g, '') + '</span>;' + addReturn;
 	}
 	/*jslint regexp: true*/
-	str += 'clickHeatServer = \'' + scriptPath + 'click.php\';' + addReturn;
-	str += 'initClickHeat(); //--&gt;<br />';
+	str += 'clickHeatServer = \'' + chAdmin.scriptPath + 'click.php\';' + addReturn;
+	str += 'initClickHeat();<br />';
 	str += '&lt;/script&gt;';
 	document.getElementById('clickheat-js').innerHTML = str;
 }
@@ -314,7 +317,7 @@ function showJsCode()
 {
 	var xmlhttp;
 	xmlhttp = getXmlHttp();
-	xmlhttp.open('GET', scriptIndexPath + 'action=javascript&rand=' + Date(), true);
+	xmlhttp.open('GET', chAdmin.scriptIndexPath + 'action=javascript&rand=' + Date(), true);
 	xmlhttp.onreadystatechange = function ()
 	{
 		if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
@@ -332,7 +335,7 @@ function loadIframe()
 {
 	var xmlhttp;
 	xmlhttp = getXmlHttp();
-	xmlhttp.open('GET', scriptIndexPath + 'action=iframe&group=' + document.getElementById('formGroup').value + '&rand=' + Date(), true);
+	xmlhttp.open('GET', chAdmin.scriptIndexPath + 'action=iframe&group=' + document.getElementById('formGroup').value + '&rand=' + Date(), true);
 	xmlhttp.onreadystatechange = function ()
 	{
 		if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
@@ -369,7 +372,7 @@ function saveGroupLayout()
 		return false;
 	}
 	xmlhttp = getXmlHttp();
-	xmlhttp.open('GET', scriptIndexPath + 'action=layoutupdate&group=' + document.getElementById('formGroup').value + '&url=' + encodeURIComponent(document.getElementById('formUrl').value) + '&left=' + document.getElementById('layout-left-' + i).value + '&right=' + document.getElementById('layout-right-' + i).value + '&center=' + document.getElementById('layout-center-' + i).value + '&rand=' + Date(), true);
+	xmlhttp.open('GET', chAdmin.scriptIndexPath + 'action=layoutupdate&group=' + document.getElementById('formGroup').value + '&url=' + encodeURIComponent(document.getElementById('formUrl').value) + '&left=' + document.getElementById('layout-left-' + i).value + '&right=' + document.getElementById('layout-right-' + i).value + '&center=' + document.getElementById('layout-center-' + i).value + '&rand=' + Date(), true);
 	xmlhttp.onreadystatechange = function ()
 	{
 		if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
@@ -388,76 +391,56 @@ function saveGroupLayout()
 /* Hide iframe's flashes and iframes */
 function cleanIframe()
 {
-	var currentIframeContent, currentIframe, newContent, pos, pos2, reg, oldPos, startReg, endReg, found, width, height;
-	if (document.getElementById('webPageFrame').src.search('clickempty.html') !== -1)
-	{
-		return true;
-	}
-	if (hideIframes === false && hideFlashes === false)
+	var currentIframe = document.getElementById('webPageFrame'),
+			win = currentIframe.contentWindow || false,
+			doc = win && win.document || currentIframe.contentDocument,
+			search = [],
+			e,
+			elements = [],
+			width,
+			height,
+			insert,
+			s;
+	if (!currentIframe || !doc || currentIframe.src.search('clickempty.html') !== -1)
 	{
 		return true;
 	}
 	try
 	{
-		currentIframe = document.getElementById('webPageFrame');
-		if (currentIframe.contentDocument)
+		if (chAdmin.hideIframes)
 		{
-			currentIframeContent = currentIframe.contentDocument;
+			search.push('iframe');
 		}
-		else if (currentIframe.Document)
+		if (chAdmin.hideFlashes)
 		{
-			currentIframeContent = currentIframe.Document;
+			search.push('object');
 		}
-		/** Hide iframes and flashes content */
-		if (!currentIframeContent)
+		elements = doc.querySelectorAll(search.join(','));
+		for (e = 0; e < elements.length; e++)
 		{
-			return false;
+			width = parseInt(elements[e].getAttribute('width') || 300);
+			height = parseInt(elements[e].getAttribute('height') || 150);
+			insert = doc.createElement('span');
+			insert.innerHTML = 'Iframe/Object';
+			s = insert.style;
+			s.padding = Math.ceil(height / 2) + 'px ' + Math.ceil(width / 2) + 'px';
+			s.lineHeight = (height + 10) + 'px';
+			s.border = '1px solid #00f';
+			s.backgroundColor = '#aaf';
+			elements[e].parentNode.insertBefore(insert, elements[e]);
+			elements[e].parentNode.removeChild(elements[e]);
 		}
-		newContent = currentIframeContent.body.innerHTML;
-		oldPos = 0;
-		if (hideIframes === false)
+		elements = doc.querySelectorAll('*');
+		for (e = 0; e < elements.length; e++)
 		{
-			reg = 'object';
-		}
-		else
-		{
-			if (hideFlashes === false)
+			if (elements[e].style && elements[e].style.backdropFilter)
 			{
-				reg = 'iframe';
-			}
-			else
-			{
-				reg = 'object|iframe';
+				elements[e].style.backdropFilter = '';
 			}
 		}
-		startReg = new RegExp('<(' + reg + ')', 'i');
-		endReg = new RegExp('<\/(' + reg + ')', 'i');
-		while (true)
-		{
-			pos = newContent.search(startReg);
-			pos2 = newContent.search(endReg);
-			if (pos === -1 || pos2 === -1 || pos === oldPos || pos > pos2)
-			{
-				break;
-			}
-			pos2 += 9;
-			found = newContent.substring(pos, pos2);
-			width = found.match(/width=["']?(\d+)/); // " quote for Zend
-			if (width === null)
-			{
-				width = [0, 300];
-			}
-			height = found.match(/height=["']?(\d+)/); // " quote for Zend
-			if (height === null)
-			{
-				height = [0, 150];
-			}
-			newContent = newContent.substring(0, pos) + '<span style="margin:0; padding:' + Math.ceil(height[1] / 2) + 'px ' + Math.ceil(width[1] / 2) + 'px; line-height:' + (height[1] * 1 + 10) + 'px; border:1px solid #00f; background-color:#aaf; font-size:0;">Flash/Iframe</span>&nbsp;' + newContent.substring(pos2, newContent.length);
-			oldPos = pos;
-		}
-		currentIframeContent.body.innerHTML = newContent;
 	}
-	catch (e) {
+	catch (ex)
+	{
 	}
 }
 
@@ -472,20 +455,20 @@ function drawAlphaSelector(obj, max)
 		str += '<a href="#" id="alpha-level-' + alpha + '" onclick="changeAlpha(' + alpha + '); this.blur(); return false;" style="font-size:12px; border-top:1px solid #888; border-bottom:1px solid #888;' + (i === 0 ? ' border-left:1px solid #888;' : '') + '' + (i === (max - 1) ? ' border-right:1px solid #888;' : '') + ' text-decoration:none; background-color:rgb(' + grey + ',' + grey + ',' + grey + ');">&nbsp;</a>';
 	}
 	document.getElementById(obj).innerHTML = str;
-	/** Check that currentAlpha exists */
-	while (!document.getElementById('alpha-level-' + currentAlpha))
+	/* Check that chAdmin.currentAlpha exists */
+	while (!document.getElementById('alpha-level-' + chAdmin.currentAlpha))
 	{
-		currentAlpha -= 1;
+		chAdmin.currentAlpha -= 1;
 	}
 }
 
 /* Ajax request to show javascript code */
 function runCleaner()
 {
-	document.getElementById('cleaner').innerHTML = cleanerRunning;
+	document.getElementById('cleaner').innerHTML = chAdmin.cleanerRunning;
 	var xmlhttp;
 	xmlhttp = getXmlHttp();
-	xmlhttp.open('GET', scriptIndexPath + 'action=cleaner&rand=' + Date(), true);
+	xmlhttp.open('GET', chAdmin.scriptIndexPath + 'action=cleaner&rand=' + Date(), true);
 	xmlhttp.onreadystatechange = function ()
 	{
 		if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
@@ -521,7 +504,7 @@ function showLatestVersion()
 {
 	var xmlhttp;
 	xmlhttp = getXmlHttp();
-	xmlhttp.open('GET', scriptIndexPath + 'action=latest&rand=' + Date(), true);
+	xmlhttp.open('GET', chAdmin.scriptIndexPath + 'action=latest&rand=' + Date(), true);
 	xmlhttp.onreadystatechange = function ()
 	{
 		if (xmlhttp.readyState === 4 && xmlhttp.status === 200)
@@ -536,38 +519,38 @@ function showLatestVersion()
 /* Shows main panel */
 function showPanel()
 {
-	var div = (isPiwikModule === true ? 'contenu' : 'adminPanel');
+	var div = (chAdmin.isPiwikModule ? 'contenu' : 'adminPanel');
 	if (document.getElementById(div).style.display !== 'none')
 	{
 		return true;
 	}
-	if (isPiwikModule === true)
+	if (chAdmin.isPiwikModule)
 	{
 		document.getElementById('topBars').style.display = 'block';
 		document.getElementById('header').style.display = 'block';
 	}
 	document.getElementById(div).style.display = 'block';
-	document.getElementById('divPanel').innerHTML = '<img src="' + scriptPath + 'images/arrow-up.png" alt=""/>';
+	document.getElementById('divPanel').innerHTML = '<img src="' + chAdmin.scriptPath + 'images/arrow-up.png" alt=""/>';
 	resizeDiv();
 }
 /* Hides main panel */
 function hidePanel()
 {
-	var div = (isPiwikModule === true ? 'contenu' : 'adminPanel');
-	if (isPiwikModule === true)
+	var div = (chAdmin.isPiwikModule ? 'contenu' : 'adminPanel');
+	if (chAdmin.isPiwikModule)
 	{
 		document.getElementById('topBars').style.display = 'none';
 		document.getElementById('header').style.display = 'none';
 	}
 	document.getElementById(div).style.display = 'none';
-	document.getElementById('divPanel').innerHTML = '<img src="' + scriptPath + 'images/arrow-down.png" alt=""/>';
+	document.getElementById('divPanel').innerHTML = '<img src="' + chAdmin.scriptPath + 'images/arrow-down.png" alt=""/>';
 	resizeDiv();
 }
 
 /* Reverse the state of the admin cookie (used not to log the clicks for admin user) */
 function adminCookie()
 {
-	if (confirm(jsAdminCookie))
+	if (confirm(chAdmin.jsAdminCookie))
 	{
 		document.cookie = 'clickheat-admin=; expires=Fri, 27 Jul 2001 01:00:00 UTC; path=/';
 	}

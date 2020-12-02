@@ -1,4 +1,8 @@
 <?php
+
+use Dugwood\Core\Configuration;
+use Dugwood\Core\Checker\Html;
+
 /**
  * ClickHeat : Fichier principal / Main file
  *
@@ -44,18 +48,9 @@ define('CLICKHEAT_ROOT', str_replace('\\', '/', dirname(__FILE__)).'/');
 define('CLICKHEAT_CONFIG', CLICKHEAT_ROOT.'config/config.php');
 define('IS_PIWIK_MODULE', false);
 
-/* Improve buffer usage and compression */
 if (function_exists('ob_start'))
 {
-	/* Check that Zlib is not enabled by default (value should be 1-9, else it will be an empty string) */
-	if (@ini_get('zlib.output_compression') || !function_exists('ob_gzhandler'))
-	{
-		ob_start();
-	}
-	else
-	{
-		ob_start('ob_gzhandler');
-	}
+	ob_start();
 }
 
 /* Loading language according to browser's Accept-Language or cookie «language» */
@@ -180,132 +175,135 @@ if (!defined('CLICKHEAT_ADMIN'))
 $clickheatConf['__screenSizes'] = array(0 /* Must start with 0 */, 240, 640, 800, 1024, 1152, 1280, 1440, 1600, 1800);
 $clickheatConf['__browsersList'] = array('all' => '', 'msie' => 'Internet Explorer', 'firefox' => 'Firefox', 'chrome' => 'Chrome', 'safari' => 'Safari', 'opera' => 'Opera', 'unknown' => '');
 
+$checkHtml = false;
+
 switch ($__action)
 {
 	case 'config':
+		if (file_exists(CLICKHEAT_CONFIG) && CLICKHEAT_ADMIN !== true)
 		{
-			if (file_exists(CLICKHEAT_CONFIG) && CLICKHEAT_ADMIN !== true)
-			{
-				exit('Error');
-			}
-			/* No break here */
+			exit('Error');
 		}
+	/* No break here */
 	case 'check':
 	case 'view':
 	case 'login':
-		{
-			header('Content-Type: text/html; charset=utf-8');
-			include CLICKHEAT_ROOT.'header.php';
-			include CLICKHEAT_ROOT.$__action.'.php';
-			include CLICKHEAT_ROOT.'footer.php';
-			break;
-		}
+		$checkHtml = true;
+		header('Content-Type: text/html; charset=utf-8');
+		include CLICKHEAT_ROOT.'header.php';
+		include CLICKHEAT_ROOT.$__action.'.php';
+		include CLICKHEAT_ROOT.'footer.php';
+		break;
+
 	case 'generate':
 	case 'layout':
 	case 'javascript':
 	case 'latest':
 	case 'cleaner':
-		{
-			header('Content-Type: text/html; charset=utf-8');
-			include CLICKHEAT_ROOT.$__action.'.php';
-			break;
-		}
+		$checkHtml = true;
+		header('Content-Type: text/html; charset=utf-8');
+		include CLICKHEAT_ROOT.$__action.'.php';
+		break;
+
 	case 'iframe':
+		$group = isset($_GET['group']) ? str_replace('/', '', $_GET['group']) : '';
+		if (is_dir($clickheatConf['logPath'].$group))
 		{
-			$group = isset($_GET['group']) ? str_replace('/', '', $_GET['group']) : '';
-			if (is_dir($clickheatConf['logPath'].$group))
+			$webPage = array('/');
+			if (file_exists($clickheatConf['logPath'].$group.'/url.txt'))
 			{
-				$webPage = array('/');
-				if (file_exists($clickheatConf['logPath'].$group.'/url.txt'))
+				$f = fopen($clickheatConf['logPath'].$group.'/url.txt', 'r');
+				if ($f !== false)
 				{
-					$f = fopen($clickheatConf['logPath'].$group.'/url.txt', 'r');
-					if ($f !== false)
-					{
-						$webPage = explode('>', trim(fgets($f, 1024)));
-						fclose($f);
-					}
+					$webPage = explode('>', trim(fgets($f, 1024)));
+					fclose($f);
 				}
-				echo $webPage[0];
 			}
-			break;
+			echo $webPage[0];
 		}
+		break;
+
 	case 'png':
-		{
-			$imagePath = $clickheatConf['cachePath'].(isset($_GET['file']) ? str_replace('/', '', $_GET['file']) : '**unknown**');
+		$imagePath = $clickheatConf['cachePath'].(isset($_GET['file']) ? str_replace('/', '', $_GET['file']) : '**unknown**');
 
-			header('Content-Type: image/png');
-			if (file_exists($imagePath))
-			{
-				readfile($imagePath);
-			}
-			else
-			{
-				readfile(CLICKHEAT_ROOT.'images/warning.png');
-			}
-			break;
+		header('Content-Type: image/png');
+		if (file_exists($imagePath))
+		{
+			readfile($imagePath);
 		}
+		else
+		{
+			readfile(CLICKHEAT_ROOT.'images/warning.png');
+		}
+		break;
+
 	case 'layoutupdate':
+		if (CLICKHEAT_ADMIN !== true)
 		{
-			if (CLICKHEAT_ADMIN !== true)
-			{
-				exit('Error');
-			}
-			$group = isset($_GET['group']) ? str_replace('/', '', $_GET['group']) : '';
-			$url = isset($_GET['url']) ? $_GET['url'] : '';
-			if (strpos($url, 'http') !== 0)
-			{
-				$url = 'http://'.$_SERVER['SERVER_NAME'].'/'.ltrim($url, '/');
-			}
-			/* Improved security for PHP injection (PMV2.3b3 bug) */
-			$url = parse_url(str_replace(array('<', '>'), array('', ''), $url));
-			$left = isset($_GET['left']) ? (int) $_GET['left'] : 0;
-			$center = isset($_GET['center']) ? (int) $_GET['center'] : 0;
-			$right = isset($_GET['right']) ? (int) $_GET['right'] : 0;
-
-			if (!is_dir($clickheatConf['logPath'].$group) || !isset($url['host']) || !isset($url['path']))
-			{
-				exit('Error');
-			}
-
-			if ($url['scheme'] !== 'http' && $url['scheme'] !== 'https')
-			{
-				$url['scheme'] = 'http';
-			}
-			if (isset($url['query']))
-			{
-				$url = $url['scheme'].'://'.$url['host'].$url['path'].'?'.$url['query'];
-			}
-			else
-			{
-				$url = $url['scheme'].'://'.$url['host'].$url['path'];
-			}
-			$f = fopen($clickheatConf['logPath'].$group.'/url.txt', 'w');
-			fputs($f, $url.'>'.$left.'>'.$center.'>'.$right);
-			fclose($f);
-
-			echo 'OK';
-			break;
+			exit('Error');
 		}
+		$group = isset($_GET['group']) ? str_replace('/', '', $_GET['group']) : '';
+		$url = isset($_GET['url']) ? $_GET['url'] : '';
+		if (strpos($url, 'http') !== 0)
+		{
+			$url = 'http://'.$_SERVER['SERVER_NAME'].'/'.ltrim($url, '/');
+		}
+		/* Improved security for PHP injection (PMV2.3b3 bug) */
+		$url = parse_url(str_replace(array('<', '>'), array('', ''), $url));
+		$left = isset($_GET['left']) ? (int) $_GET['left'] : 0;
+		$center = isset($_GET['center']) ? (int) $_GET['center'] : 0;
+		$right = isset($_GET['right']) ? (int) $_GET['right'] : 0;
+
+		if (!is_dir($clickheatConf['logPath'].$group) || !isset($url['host']) || !isset($url['path']))
+		{
+			exit('Error');
+		}
+
+		if ($url['scheme'] !== 'http' && $url['scheme'] !== 'https')
+		{
+			$url['scheme'] = 'http';
+		}
+		if (isset($url['query']))
+		{
+			$url = $url['scheme'].'://'.$url['host'].$url['path'].'?'.$url['query'];
+		}
+		else
+		{
+			$url = $url['scheme'].'://'.$url['host'].$url['path'];
+		}
+		$f = fopen($clickheatConf['logPath'].$group.'/url.txt', 'w');
+		fputs($f, $url.'>'.$left.'>'.$center.'>'.$right);
+		fclose($f);
+
+		echo 'OK';
+		break;
+
 	case 'logout':
+		setcookie('clickheat', '', time() - 30 * 86400, '/');
+		/* IIS removes cookies when sending a 301/302 header, so we need to do some crap (and yes, this HTML code is crap too) */
+		if (strpos($_SERVER['SERVER_SOFTWARE'], 'IIS'))
 		{
-			setcookie('clickheat', '', time() - 30 * 86400, '/');
-			/* IIS removes cookies when sending a 301/302 header, so we need to do some crap (and yes, this HTML code is crap too) */
-			if (strpos($_SERVER['SERVER_SOFTWARE'], 'IIS'))
-			{
-				echo '<meta http-equiv="refresh" content="0;', CLICKHEAT_INDEX_PATH, 'action=view" />';
-				echo '<a href="', CLICKHEAT_INDEX_PATH, 'action=view">click here</a>';
-			}
-			else
-			{
-				header('Location: index.php');
-			}
-			exit;
-			break;
+			echo '<meta http-equiv="refresh" content="0;', CLICKHEAT_INDEX_PATH, 'action=view" />';
+			echo '<a href="', CLICKHEAT_INDEX_PATH, 'action=view">click here</a>';
 		}
+		else
+		{
+			header('Location: index.php');
+		}
+		exit;
+
 	default:
-		{
-			header('HTTP/1.0 404 Not Found');
-			exit('Error, page not found');
-			break;
-		}
+		header('HTTP/1.0 404 Not Found');
+		exit('Error, page not found');
+		break;
+}
+
+if ($checkHtml === true && isset($_SERVER['SERVER_NAME']) && $_SERVER['SERVER_NAME'] === 'clickheat.dugwood.com' && Configuration::dev === true)
+{
+	$content = ob_get_clean();
+	if (strpos($content, '<!DOCTYPE') === 0 && strpos($content, '<!-- ignore-html-checker -->') === false && ($pos = strrpos($content, '</body>')) !== false)
+	{
+		$content = substr($content, 0, $pos).Html::getCode($content).substr($content, $pos);
+	}
+	echo $content;
 }

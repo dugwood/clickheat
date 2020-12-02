@@ -15,7 +15,7 @@ if (!defined('CLICKHEAT_LANGUAGE'))
 		return false;"><img src="<?php echo CLICKHEAT_PATH ?>images/ko.png" alt="Close"/></a></span>
 <h1><?php echo LANG_LATEST_CHECK ?></h1>
 <?php
-$f = @fsockopen('raw.github.com', 443, $errno, $errstr, 5);
+$f = @fsockopen('ssl://raw.githubusercontent.com', 443, $errno, $errstr, 5);
 include CLICKHEAT_ROOT.'version.php';
 if ($f === false || is_null($f))
 {

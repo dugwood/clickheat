@@ -95,7 +95,8 @@ img {
 	margin:0;
 }
 #webPageFrame {
-	z-index:1;
+	border: 0;
+	z-index: 1;
 }
 #layoutDiv {
 	padding:2px;
@@ -139,14 +140,20 @@ img {
 	color:#c00;
 }
 .clickheat-calendar {
+	border: none;
+	margin: 0;
+	padding: 0;
 	border-left:1px solid #266590;
 	border-top:1px solid #266590;
+	border-collapse: collapse;
 }
 .clickheat-calendar th, .clickheat-calendar td {
+	border: none;
+	margin: 0;
+	padding: 0 30px;
 	text-align:center;
 	border-right:1px solid #266590;
 	border-bottom:1px solid #266590;
-	padding:0 30px;
 }
 .clickheat-calendar td {
 	color:#aaa;

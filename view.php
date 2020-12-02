@@ -104,14 +104,14 @@ $__year = (int) date('Y', $date);
 		<span id="cleaner">&nbsp;</span>
 	</span>
 	<form action="<?php echo CLICKHEAT_INDEX_PATH ?>" method="get" onsubmit="return false;" id="clickForm">
-		<table cellpadding="0" cellspacing="1" border="0" id="clickTable">
+		<table id="clickTable">
 			<tr>
 				<th><?php echo LANG_SITE ?> &amp; <?php echo LANG_GROUP ?></th><td><select name="group" id="formGroup" onchange="hideGroupLayout();
 						loadIframe();"><?php echo $__selectGroups ?></select><?php if (CLICKHEAT_ADMIN === true) echo ' <a href="#" onclick="showGroupLayout(); return false;"><img src="', CLICKHEAT_PATH, 'images/layout.png" alt="Layout"/></a>'; ?> <a href="#" onclick="updateHeatmap();
 								return false;"><img src="<?php echo CLICKHEAT_PATH ?>images/reload.png" alt="Refresh"/></a></td>
 				<td rowspan="4">
 					<?php
-					$__calendar = '<table cellpadding="0" cellspacing="0" border="0" class="clickheat-calendar"><tr>';
+					$__calendar = '<table class="clickheat-calendar"><tr>';
 					$days = explode(',', LANG_DAYS);
 					for ($d = 0; $d < 7; $d++)
 					{
@@ -134,7 +134,7 @@ $__year = (int) date('Y', $date);
 						$__calendar .= '<td id="clickheat-calendar-10'.$d.'">'.($__lastDayOfMonth - $before + $d).'</td>';
 					}
 					$cols = $before - 1;
-					$__js = 'weekDays = [';
+					$__js = 'chAdmin.weekDays = [0';
 					for ($d = 1, $days = date('t', $date); $d <= $days; $d++)
 					{
 						$D = mktime(0, 0, 0, $__month, $d, $__year);
@@ -158,7 +158,7 @@ $__year = (int) date('Y', $date);
 					?>
 				</td>
 				<td rowspan="4">
-					<table cellpadding="1" cellspacing="0" border="0" class="clickheat-calendar">
+					<table class="clickheat-calendar">
 						<tr>
 							<th><a href="#" onclick="url = window.location.href.replace(/&?date=\d+-\d+-\d+/, '');
 									if (url.search(/\?/) == -1)
@@ -173,19 +173,19 @@ $__year = (int) date('Y', $date);
 											return false;"><img src="<?php echo CLICKHEAT_PATH ?>images/next.png" alt="Next"/></a></th>
 						</tr>
 						<tr>
-							<td id="clickheat-calendar-d"><a href="#" onclick="currentRange = 'd';
+							<td id="clickheat-calendar-d"><a href="#" onclick="chAdmin.currentRange = 'd';
 									this.blur();
 									updateCalendar();
 									return false;"><?php echo $ranges[0] ?></a></td>
 						</tr>
 						<tr>
-							<td id="clickheat-calendar-w"><a href="#" onclick="currentRange = 'w';
+							<td id="clickheat-calendar-w"><a href="#" onclick="chAdmin.currentRange = 'w';
 									this.blur();
 									updateCalendar();
 									return false;"><?php echo $ranges[1] ?></a></td>
 						</tr>
 						<tr>
-							<td id="clickheat-calendar-m"><a href="#" onclick="currentRange = 'm';
+							<td id="clickheat-calendar-m"><a href="#" onclick="chAdmin.currentRange = 'm';
 									this.blur();
 									updateCalendar();
 									return false;"><?php echo $ranges[2] ?></a></td>
@@ -207,37 +207,36 @@ $__year = (int) date('Y', $date);
 	</form>
 </div>
 <div id="divPanel" onmouseover="showPanel();" onclick="hidePanel();"><img src="<?php echo CLICKHEAT_PATH ?>images/arrow-up.png" alt=""/></div>
-<script type="text/javascript" src="<?php echo CLICKHEAT_PATH ?>js/admin.js"></script>
+<script src="<?php echo CLICKHEAT_PATH ?>js/admin.js"></script>
 <div id="overflowDiv">
 	<div id="layoutDiv"></div>
 	<div id="pngDiv"></div>
-	<p><script type="text/javascript"><!--
-	document.write('<ifr' + 'ame src="<?php echo CLICKHEAT_PATH ?>clickempty.html" id="webPageFrame" onload="cleanIframe();" frameborder="0" scrolling="no" width="50" height="0"></if' + 'rame>'); //-->
-		</script></p>
+	<p><iframe src="<?php echo CLICKHEAT_PATH ?>clickempty.html" id="webPageFrame" onload="cleanIframe();" width="50" height="0"></iframe></p>
 </div>
-<script type="text/javascript"><!--
+<script>
+	/* global chAdmin, drawAlphaSelector, resizeDiv, loadIframe, runCleaner */
 <?php echo $__js ?>
-		pleaseWait = '<?php echo str_replace('\'', '\\\'', LANG_ERROR_LOADING); ?>';
-		cleanerRunning = '<?php echo str_replace('\'', '\\\'', LANG_CLEANER_RUNNING); ?>';
-		isJsOkay = '<?php echo CLICKHEAT_ADMIN === true ? '<a href="#" onclick="showJsCode(); return false;">'.str_replace('\'', '\\\'', LANG_ERROR_JAVASCRIPT).'</a>' : '' ?>';
-		jsAdminCookie = '<?php echo str_replace('\'', '\\\'', LANG_JAVASCRIPT_ADMIN_COOKIE) ?>';
-		hideIframes = <?php echo $clickheatConf['hideIframes'] === true ? 'true' : 'false' ?>;
-		hideFlashes = <?php echo $clickheatConf['hideFlashes'] === true ? 'true' : 'false' ?>;
-		scriptPath = '<?php echo (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' || isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') ? 'https' : 'http' ?>://<?php echo $_SERVER['SERVER_NAME'].CLICKHEAT_PATH ?>';
-			scriptIndexPath = '<?php echo CLICKHEAT_INDEX_PATH ?>';
-			lastDayOfMonth = <?php echo $__lastDayOfMonth ?>;
-			currentDate = [<?php echo $__day, ',', $__month, ',', $__year, ',', $__day, ',', $__month, ',', $__year ?>];
-			currentAlpha = <?php echo $clickheatConf['alpha'] ?>;
+	chAdmin.pleaseWait = '<?php echo str_replace('\'', '\\\'', LANG_ERROR_LOADING); ?>';
+	chAdmin.cleanerRunning = '<?php echo str_replace('\'', '\\\'', LANG_CLEANER_RUNNING); ?>';
+	chAdmin.isJsOkay = '<?php echo CLICKHEAT_ADMIN === true ? '<a href="#" onclick="showJsCode(); return false;">'.str_replace('\'', '\\\'', LANG_ERROR_JAVASCRIPT).'</a>' : '' ?>';
+	chAdmin.jsAdminCookie = '<?php echo str_replace('\'', '\\\'', LANG_JAVASCRIPT_ADMIN_COOKIE) ?>';
+	chAdmin.hideIframes = <?php echo $clickheatConf['hideIframes'] === true ? 'true' : 'false' ?>;
+	chAdmin.hideFlashes = <?php echo $clickheatConf['hideFlashes'] === true ? 'true' : 'false' ?>;
+	chAdmin.scriptPath = '<?php echo (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' || isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') ? 'https' : 'http' ?>://<?php echo $_SERVER['SERVER_NAME'].CLICKHEAT_PATH ?>';
+		chAdmin.scriptIndexPath = '<?php echo CLICKHEAT_INDEX_PATH ?>';
+		chAdmin.lastDayOfMonth = <?php echo $__lastDayOfMonth ?>;
+		chAdmin.currentDate = [<?php echo $__day, ',', $__month, ',', $__year, ',', $__day, ',', $__month, ',', $__year ?>];
+		chAdmin.currentAlpha = <?php echo $clickheatConf['alpha'] ?>;
 
-			/** Draw the alpha selector */
-			drawAlphaSelector('alphaSelector', 30);
+		/* Draw the alpha selector */
+		drawAlphaSelector('alphaSelector', 30);
 
-			/** Resize the main div */
-			resizeDiv();
+		/* Resize the main div */
+		resizeDiv();
 
-			/** Load iframe (which will load the heatmap once the info is okay) */
-			loadIframe();
+		/* Load iframe (which will load the heatmap once the info is okay) */
+		loadIframe();
 
-			/** Run cleaner */
-			runCleaner(); //-->
+		/* Run cleaner */
+		runCleaner();
 </script>
