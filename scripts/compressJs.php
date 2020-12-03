@@ -16,4 +16,4 @@ if ($str === false)
 }
 Javascript::compress($str);
 
-file_put_contents(dirname(__FILE__).'/../js/clickheat.js', '/** Code by www.dugwood.com */'.$str);
+file_put_contents(dirname(__FILE__).'/../js/clickheat.js', '/* dugwood.com - JS_IGNORE */'.$str);

@@ -433,9 +433,9 @@ function cleanIframe()
 		elements = doc.querySelectorAll('*');
 		for (e = 0; e < elements.length; e++)
 		{
-			if (elements[e].style && elements[e].style.backdropFilter)
+			if (elements[e].style)
 			{
-				elements[e].style.backdropFilter = '';
+				elements[e].style.backdropFilter = 'none';
 			}
 		}
 	}
