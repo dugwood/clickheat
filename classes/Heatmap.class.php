@@ -12,6 +12,7 @@
 class Heatmap
 {
 	/* @var integer $memory Limite de mémoire / Memory limit */
+
 	var $memory = 8388608;
 	/* @var integer $step Groupement des pixels / Pixels grouping */
 	var $step = 5;
@@ -208,8 +209,8 @@ class Heatmap
 
 		/**
 		 * Colors creation:
-		 * grey	=> deep blue (rgB)	=> light blue (rGB)	=> green (rGb)		=> yellow (RGb)		=> red (Rgb)
-		 * 0	   $this->__colors[0]	   $this->__colors[1]	   $this->__colors[2]	   $this->__colors[3]	   128
+		 * grey	=> deep blue (rgB)    => light blue (rGB)   => green (rGb)        => yellow (RGb)       => red (Rgb)
+		 * 0       $this->__colors[0]    $this->__colors[1]    $this->__colors[2]    $this->__colors[3]    128
 		 */
 		sort($this->__colors);
 		$colors = array();
@@ -232,6 +233,7 @@ class Heatmap
 			{
 				$colors[$i][0] = $this->__high;
 			}
+			$colors[$i][0] = intval($colors[$i][0]);
 			/* Green */
 			if ($i < $this->__colors[0])
 			{
@@ -249,6 +251,7 @@ class Heatmap
 			{
 				$colors[$i][1] = $this->__high - ($this->__high - $this->__low) * ($i - $this->__colors[3]) / (127 - $this->__colors[3]);
 			}
+			$colors[$i][1] = intval($colors[$i][1]);
 			/* Blue */
 			if ($i < $this->__colors[0])
 			{
@@ -266,6 +269,7 @@ class Heatmap
 			{
 				$colors[$i][2] = $this->__low;
 			}
+			$colors[$i][2] = intval($colors[$i][2]);
 		}
 		for ($image = 0; $image < $nbOfImages; $image++)
 		{
